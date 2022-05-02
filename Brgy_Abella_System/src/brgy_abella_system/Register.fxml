@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="brgy_abella_system.RegisterController">
+   <left>
+      <AnchorPane prefHeight="400.0" prefWidth="275.0" style="-fx-background-color: #37366FCC;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="75.0" layoutY="199.0" text="Profilling System" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="67.0" fitWidth="103.0" layoutX="103.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/Logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="75.0" layoutY="212.0" text="Abella" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="39.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="400.0" prefWidth="387.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="RegisterStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="267.0" prefHeight="15.0" prefWidth="325.0" textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="78.0" layoutY="55.0" text="Create Valid Account" textFill="#373462">
+               <font>
+                  <Font name="System Bold Italic" size="21.0" />
+               </font>
+            </Label>
+            <TextField fx:id="EmpId_Register" layoutX="93.0" layoutY="111.0" promptText="Employee Id" />
+            <TextField fx:id="Username_Register" layoutX="93.0" layoutY="150.0" promptText="Username" />
+            <PasswordField fx:id="Password_Register" layoutX="93.0" layoutY="191.0" promptText="Password" />
+            <PasswordField fx:id="PasswordConfirm_Register" layoutX="93.0" layoutY="232.0" promptText="Confirm Password" />
+            <Button fx:id="RegisterBtn" layoutX="94.0" layoutY="298.0" mnemonicParsing="false" onAction="#RegisterButtonAction" prefHeight="25.0" prefWidth="148.0" style="-fx-background-color: #373462;" text="Register" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <ImageView fitHeight="42.0" fitWidth="49.0" layoutX="21.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Register.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="ExitBtn" layoutX="290.0" layoutY="4.0" mnemonicParsing="false" onAction="#ExitButtonAction" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="14.0" fitWidth="15.0" onDragDetected="#ExitButtonAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Close.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="CancelBtn" layoutX="94.0" layoutY="330.0" mnemonicParsing="false" onAction="#CancelButtonAction" prefHeight="25.0" prefWidth="148.0" style="-fx-background-color: #373462CC;" text="Back" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>
