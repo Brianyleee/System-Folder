@@ -18,8 +18,8 @@ public class MainSystem extends Application {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
-        Model model = new Model();
-        model.Draggable(stage, root);
+        Repeatables action = new Repeatables();
+        action.Draggable(stage, root);
     }
 
 

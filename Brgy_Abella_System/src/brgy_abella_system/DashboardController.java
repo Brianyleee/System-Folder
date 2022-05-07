@@ -25,7 +25,8 @@ import javafx.stage.Stage;
  */
 public class DashboardController implements Initializable {
 
-    Model DashboardModel = new Model();
+    Functions DashboardModel = new Functions();
+    Repeatables action = new Repeatables();
 
     private BorderPane BorderPane;
     @FXML
@@ -46,6 +47,6 @@ public class DashboardController implements Initializable {
         Stage window = (Stage) LogoutBtn.getScene().getWindow();
         window.setScene(new Scene(root));
         window.show();
-        DashboardModel.Draggable(window, root);
+        action.Draggable(window, root);
     }
 }

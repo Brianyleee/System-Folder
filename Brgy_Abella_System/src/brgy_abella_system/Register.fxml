@@ -50,7 +50,7 @@
             <TextField fx:id="Username_Register" layoutX="93.0" layoutY="150.0" promptText="Username" />
             <PasswordField fx:id="Password_Register" layoutX="93.0" layoutY="191.0" promptText="Password" />
             <PasswordField fx:id="PasswordConfirm_Register" layoutX="93.0" layoutY="232.0" promptText="Confirm Password" />
-            <Button fx:id="RegisterBtn" layoutX="94.0" layoutY="298.0" mnemonicParsing="false" onAction="#RegisterButtonAction" prefHeight="25.0" prefWidth="148.0" style="-fx-background-color: #373462;" text="Register" textFill="WHITE">
+            <Button fx:id="RegisterBtn" defaultButton="true" layoutX="94.0" layoutY="298.0" mnemonicParsing="false" onAction="#RegisterButtonAction" prefHeight="25.0" prefWidth="148.0" style="-fx-background-color: #373462;" text="Register" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>

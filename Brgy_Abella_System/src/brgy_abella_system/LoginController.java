@@ -23,7 +23,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.*;
 
 public class LoginController implements Initializable {
-    public Model LoginModel = new Model();   
+    public Functions LoginModel = new Functions();   
+    Repeatables action = new Repeatables();
     @FXML
     private TextField Username;
     @FXML
@@ -47,10 +48,7 @@ public class LoginController implements Initializable {
         String username = Username.getText();
         String password = Password.getText();
         if (LoginModel.isLogin(username, password)) {
-            Parent root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
-            Stage window = (Stage) LoginBtn.getScene().getWindow();
-            window.setScene(new Scene(root));
-            LoginModel.Draggable(window, root);
+            action.ChangeScene("Dashboard.fxml", LoginBtn);
         } else {
             LoginStatus.setText("Invalid Username / Password");
         }
@@ -60,13 +58,12 @@ public class LoginController implements Initializable {
     public void CreateButtonAction(ActionEvent event) throws IOException {
         String FXMLname = "Register.fxml";
         Button BtnName = CreateBtn;
-        LoginModel.ChangeScene(FXMLname, BtnName);
+        action.ChangeScene(FXMLname, BtnName);
     }
 
     @FXML
     public void ExitButtonAction(ActionEvent event) {
-        Stage stage = (Stage) ExitBtn.getScene().getWindow();
-        stage.close();
+        action.Exit(ExitBtn);
     }
 
 

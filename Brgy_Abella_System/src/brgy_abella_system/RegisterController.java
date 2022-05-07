@@ -24,7 +24,8 @@ import javafx.stage.StageStyle;
  */
 public class RegisterController implements Initializable {
 
-    public Model RegisterModel = new Model();
+    public Functions RegisterModel = new Functions();
+    Repeatables action = new Repeatables();
     @FXML
     private Button ExitBtn;
     @FXML
@@ -52,8 +53,7 @@ public class RegisterController implements Initializable {
 
     @FXML
     private void ExitButtonAction(ActionEvent event) {
-        Stage stage = (Stage) ExitBtn.getScene().getWindow();
-        stage.close();
+        action.Exit(ExitBtn);
     }
 
     @FXML
@@ -62,32 +62,34 @@ public class RegisterController implements Initializable {
         String Username = Username_Register.getText();
         String Password = Password_Register.getText();
         String CPassword = PasswordConfirm_Register.getText();
-        if (!Emp_Id.isEmpty() || !Username.isEmpty() || !Password.isEmpty() || !CPassword.isEmpty()) {
-            if (RegisterModel.isAccountExisting(Emp_Id)) {
-                if (RegisterModel.isValidAccount(Emp_Id)) {
-                    if (RegisterModel.isUsernameExisting(Username)) {
-                        if (RegisterModel.isSamePassword(Password, CPassword)) {
-                            if (RegisterModel.InsertAccount(Emp_Id, Username, Password)) {
-                                if (RegisterModel.InsertUsernameEmployee(Username, Emp_Id)) {
-                                    RegisterStatus.setText("Account Has been Added");
+        if (!Emp_Id.isEmpty() && !Username.isEmpty() && !Password.isEmpty() && !CPassword.isEmpty()) {
+            if (RegisterModel.isEmpIdEsxisting(Emp_Id)) {
+                if (RegisterModel.isAccountExisting(Emp_Id)) {
+                    if (RegisterModel.isValidAccount(Emp_Id)) {
+                            if (RegisterModel.isSamePassword(Password, CPassword)) {
+                                if (RegisterModel.InsertAccount(Emp_Id, Username, Password)) {
+                                    if (RegisterModel.InsertUsernameEmployee(Username, Emp_Id)) {
+                                        RegisterStatus.setText("Account Has been Added");
+                                        action.ChangeScene("Login.fxml", RegisterBtn);
+                                    } else {
+                                        RegisterStatus.setText("Account Was Not Added");
+                                    }
                                 } else {
-                                    RegisterStatus.setText("Account Was Not Added");
+                                    RegisterStatus.setText("Username Must be Unique");
                                 }
                             } else {
-                                RegisterStatus.setText("Account Was Not Added");
+                                RegisterStatus.setText("Password did not match");
                             }
-                        } else {
-                            RegisterStatus.setText("Password did not match");
-                        }
                     } else {
-                        RegisterStatus.setText("Username is Taken");
+                        RegisterStatus.setText("You Have no Access Rights to Create Valid Account");
                     }
                 } else {
-                    RegisterStatus.setText("You Have no Access Rights to Create Valid Account");
+                    RegisterStatus.setText("Employee has an Existing Account");
                 }
             } else {
-                RegisterStatus.setText("Employee has an Existing Account");
+                RegisterStatus.setText("Employee Id is not Existing");
             }
+
         } else {
             RegisterStatus.setText("Fill out the Requirements");
         }
@@ -96,8 +98,7 @@ public class RegisterController implements Initializable {
 
     @FXML
     private void CancelButtonAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-        Stage window = (Stage) CancelBtn.getScene().getWindow();
-        window.setScene(new Scene(root));
+        action.ChangeScene("Login.fxml", CancelBtn);
     }
+    
 }

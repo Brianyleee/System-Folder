@@ -8,36 +8,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class Model {
+public class Functions {
 
     Connection Connect;
-    private double x,y=0;
 
-    public Model() {
+    public Functions() {
         Connect = Connector.Connect();
         if (Connect == null) {
             System.exit(0);
         }
     }
-    
-    public void Draggable(Stage stage,Parent root){
-        
-        root.setOnMousePressed(mouseEvent->{
-            x = mouseEvent.getSceneX();
-            y = mouseEvent.getSceneY();
-        });
-        root.setOnMouseDragged(mouseEvent->{
-            stage.setX(mouseEvent.getScreenX()-x);
-            stage.setY(mouseEvent.getScreenY()-y);
-        });
-    }
-    
-    public void ChangeScene(String FXMLname,Button BtnName) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource(FXMLname));
-        Stage window = (Stage) BtnName.getScene().getWindow();
-        window.setScene(new Scene(root));
-        Draggable(window, root);
-    }
+
 
 //    Login Functionality Validating if the username and password are the same with the one in the database.
     public boolean isLogin(String user, String pass) throws SQLException {
@@ -114,8 +95,30 @@ public class Model {
             rs.close();
         }
     }
-//    Registration Validating if the Username was Already taken.
 
+//    Registration Validating if the Employee-Id is Existing.
+    public boolean isEmpIdEsxisting(String Emp_Id) throws SQLException {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT Employee_Id FROM Employee WHERE Employee_Id = ?";
+        try {
+            ps = Connect.prepareStatement(query);
+            ps.setString(1, Emp_Id);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                return true;
+            }else{
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        } finally {
+            ps.close();
+            rs.close();
+        }
+    }
+
+//    Registration Validating if the Username was Already taken.
     public boolean isUsernameExisting(String Username) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = null;
