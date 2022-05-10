@@ -1,5 +1,7 @@
 
-package brgy_abella_system;
+package brgy_abella_system.Login;
+import brgy_abella_system.Functions;
+import brgy_abella_system.Repeatables;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -48,7 +50,7 @@ public class LoginController implements Initializable {
         String username = Username.getText();
         String password = Password.getText();
         if (LoginModel.isLogin(username, password)) {
-            action.ChangeScene("Dashboard.fxml", LoginBtn);
+            action.ChangeScene("Dashboard/Dashboard.fxml", LoginBtn);
         } else {
             LoginStatus.setText("Invalid Username / Password");
         }
@@ -56,7 +58,7 @@ public class LoginController implements Initializable {
 
     @FXML
     public void CreateButtonAction(ActionEvent event) throws IOException {
-        String FXMLname = "Register.fxml";
+        String FXMLname = "Register/Register.fxml";
         Button BtnName = CreateBtn;
         action.ChangeScene(FXMLname, BtnName);
     }
@@ -64,9 +66,6 @@ public class LoginController implements Initializable {
     @FXML
     public void ExitButtonAction(ActionEvent event) {
         action.Exit(ExitBtn);
-    }
-
-
-    
+    } 
 
 }

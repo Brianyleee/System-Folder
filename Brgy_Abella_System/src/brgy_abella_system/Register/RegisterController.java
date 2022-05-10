@@ -1,4 +1,7 @@
-package brgy_abella_system;
+package brgy_abella_system.Register;
+import brgy_abella_system.Functions;
+import brgy_abella_system.Repeatables;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -14,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -98,7 +102,7 @@ public class RegisterController implements Initializable {
 
     @FXML
     private void CancelButtonAction(ActionEvent event) throws IOException {
-        action.ChangeScene("Login.fxml", CancelBtn);
+        action.ChangeScene("Login/Login.fxml", CancelBtn);
     }
     
 }

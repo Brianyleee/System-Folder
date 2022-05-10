@@ -1,4 +1,3 @@
-
 package brgy_abella_system;
 
 import java.io.IOException;
@@ -8,10 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-
 public class Repeatables {
+
     private double x, y = 0;
-    
+
     public void Draggable(Stage stage, Parent root) {
         root.setOnMousePressed(mouseEvent -> {
             x = mouseEvent.getSceneX();
@@ -29,9 +28,18 @@ public class Repeatables {
         window.setScene(new Scene(root));
         Draggable(window, root);
     }
-    
-    public void Exit(Button Button){
+
+    public void Exit(Button Button) {
         Stage stage = (Stage) Button.getScene().getWindow();
         stage.close();
+    }
+
+    public void logout(Button LogoutBtn) throws IOException {
+        LogoutBtn.getScene().getWindow().hide();
+        Parent root = FXMLLoader.load(getClass().getResource("Login/Login.fxml"));
+        Stage window = (Stage) LogoutBtn.getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.show();
+        Draggable(window, root);
     }
 }

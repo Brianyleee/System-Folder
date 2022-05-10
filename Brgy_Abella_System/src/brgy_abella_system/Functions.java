@@ -2,6 +2,9 @@ package brgy_abella_system;
 
 import java.io.IOException;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.ZoneId;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class Functions {
-
+ZoneId defaultZoneId = ZoneId.systemDefault();
     Connection Connect;
 
     public Functions() {
@@ -175,5 +178,58 @@ public class Functions {
             ps.close();
         }
     }
-
+    
+//    Existing Employee Id in Employee List
+    public boolean isEmployeeId(String Id) throws SQLException {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT * FROM Employee WHERE Employee_Id=?";
+        try {
+            ps = Connect.prepareStatement(query);
+            ps.setString(1, Id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        } finally {
+            ps.close();
+            rs.close();
+        }
+    }
+    
+//    Insert Whole Employee Added
+    public boolean InsertEmployee(String Emp_Id, String fname,String mname,String lname,String Designation,LocalDate DOB,LocalDate Hired,LocalDate Resign,String Status,int Access) throws SQLException {
+        PreparedStatement ps = null;
+        String query = "INSERT INTO Employee (Employee_Id,Access,Designation,First_Name,Middle_Name,Last_name,DOB,Date_Hired,Date_Resigned,Status) VALUES (?,?,?,?,?,?,?,?,?,?)";
+        try {
+            ps = Connect.prepareStatement(query);
+            ps.setString(1, Emp_Id);
+            ps.setInt(2, Access);
+            ps.setString(3, Designation);
+            ps.setString(4, fname);
+            ps.setString(5, mname);
+            ps.setString(6, lname);
+            ps.setString(7, DOB.toString());
+            ps.setString(8, Hired.toString());
+            if(Resign == null){
+                String Resign2 = null;
+                ps.setString(9, Resign2);
+            }else{
+                ps.setString(9, Resign.toString());
+            }          
+            ps.setString(10, Status);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        } finally {
+            ps.close();
+        }
+    }
 }
