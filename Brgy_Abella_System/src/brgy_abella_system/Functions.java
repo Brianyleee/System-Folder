@@ -226,7 +226,6 @@ ZoneId defaultZoneId = ZoneId.systemDefault();
             ps.executeUpdate();
             return true;
         } catch (Exception e) {
-            System.out.println(e);
             return false;
         } finally {
             ps.close();

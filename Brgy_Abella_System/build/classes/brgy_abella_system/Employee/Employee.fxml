@@ -176,16 +176,16 @@
             <Insets bottom="10.0" />
          </padding>
       </VBox>
-      <GridPane layoutX="206.0" layoutY="62.0" prefHeight="459.0" prefWidth="795.0">
+      <GridPane layoutX="206.0" layoutY="62.0" prefHeight="446.0" prefWidth="795.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="158.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="429.0" minHeight="10.0" prefHeight="424.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="158.0" minHeight="0.0" prefHeight="32.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="459.0" minHeight="10.0" prefHeight="427.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView fx:id="employeeTable" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <TableView fx:id="employeeTable" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#displayClick" prefHeight="408.0" prefWidth="795.0" style="-fx-border-radius: 10px; -fx-border-color: #37366FAA; -fx-background-color: transparent;" GridPane.rowIndex="1">
               <columns>
                 <TableColumn fx:id="emp_id" prefWidth="100.0">
                      <graphic>
@@ -197,24 +197,19 @@
                         <Label text="Position" textFill="#37366f" />
                      </graphic>
                   </TableColumn>
-                  <TableColumn fx:id="fname" prefWidth="136.0">
+                  <TableColumn fx:id="fname" prefWidth="191.0">
                      <graphic>
                         <Label text="First Name" textFill="#37366f" />
                      </graphic>
                   </TableColumn>
-                  <TableColumn fx:id="mname" prefWidth="116.0">
+                  <TableColumn fx:id="mname" prefWidth="200.0">
                      <graphic>
                         <Label text="Middle Name" textFill="#37366f" />
                      </graphic>
                   </TableColumn>
-                  <TableColumn fx:id="lname" prefWidth="149.0">
+                  <TableColumn fx:id="lname" minWidth="0.0" prefWidth="174.0">
                      <graphic>
                         <Label text="Last Name" textFill="#37366f" />
-                     </graphic>
-                  </TableColumn>
-                  <TableColumn prefWidth="165.0">
-                     <graphic>
-                        <Label text="Action" textFill="#37366f" />
                      </graphic>
                   </TableColumn>
               </columns>
@@ -229,7 +224,7 @@
                         <Insets left="5.0" right="5.0" top="7.0" />
                      </HBox.margin>
                   </ImageView>
-                  <TextField prefHeight="25.0" prefWidth="436.0" promptText="Search for Existing Employee">
+                  <TextField fx:id="searchBar" onKeyReleased="#SearchData" prefHeight="25.0" prefWidth="436.0" promptText="Search for Existing Employee">
                      <HBox.margin>
                         <Insets top="3.0" />
                      </HBox.margin>
@@ -237,7 +232,15 @@
                         <Font name="Courier New" size="12.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="addEmployeeBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#AddBtnAction" prefHeight="25.0" prefWidth="333.0" style="-fx-background-color: #37366FAA;" text="Add Employee" textFill="WHITE">
+                  <Button fx:id="RefreshBtn" mnemonicParsing="false" onAction="#RefreshBtnAction" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: white; -fx-border-color: #37366FAA; -fx-border-radius: 20px;" text="Refresh" textFill="#37366f">
+                     <font>
+                        <Font name="Courier New" size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" top="3.2" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="addEmployeeBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#AddBtnAction" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: #37366FAA;" text="Add Employee" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="6.0" top="3.2" />
                      </HBox.margin>
@@ -256,7 +259,7 @@
             </HBox>
          </children>
       </GridPane>
-      <Label alignment="CENTER" graphicTextGap="10.0" layoutX="192.0" layoutY="11.0" prefHeight="45.0" prefWidth="825.0" text="ABELLA EMPLOYEE LIST" textFill="#37366f">
+      <Label alignment="CENTER" graphicTextGap="10.0" layoutX="128.0" layoutY="14.0" prefHeight="45.0" prefWidth="825.0" text="ABELLA EMPLOYEE LIST" textFill="#37366f">
          <font>
             <Font name="Courier New" size="15.0" />
          </font>
@@ -268,5 +271,20 @@
             </ImageView>
          </graphic>
       </Label>
+      <HBox alignment="CENTER" layoutX="207.0" layoutY="504.0" prefHeight="34.0" prefWidth="795.0" spacing="20.0">
+         <children>
+            <Button fx:id="editBtn" mnemonicParsing="false" prefHeight="23.0" prefWidth="104.0" style="-fx-background-color: #37366FAA; -fx-background-radius: 10px;" text="Edit" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="viewBtn" mnemonicParsing="false" prefHeight="23.0" prefWidth="104.0" style="-fx-background-color: #37366FAA; -fx-background-radius: 10px;" text="View" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <Label fx:id="trlial" layoutX="251.0" layoutY="28.0" prefHeight="17.0" prefWidth="138.0" text="Label" />
    </children>
 </AnchorPane>

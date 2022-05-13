@@ -26,6 +26,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -33,10 +34,11 @@ import javafx.scene.layout.AnchorPane;
  * @author xande
  */
 public class AddEmployeeController implements Initializable {
+
     Repeatables action = new Repeatables();
     Functions AddEmployeeModel = new Functions();
-    ObservableList<String> StatusList = FXCollections.observableArrayList("Active" , "Inactive");
-    ObservableList<Integer> Access = FXCollections.observableArrayList(0 , 1);
+    ObservableList<String> StatusList = FXCollections.observableArrayList("Active", "Inactive");
+    ObservableList<Integer> Access = FXCollections.observableArrayList(0, 1);
     @FXML
     private TextField Emp_First_Name;
     @FXML
@@ -61,42 +63,44 @@ public class AddEmployeeController implements Initializable {
     private Label Alert;
     @FXML
     private TextField Emp_id;
+    @FXML
+    private Button saveBtn;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Emp_Status.setItems(StatusList);
         Emp_Access.setItems(Access);
-    }    
-    
+    }
+
     @FXML
     public void ExitButtonAction(ActionEvent event) {
         action.Exit(cancelBtn);
-    } 
+    }
+
     @FXML
-    public void SaveButtonAction(ActionEvent event) throws SQLException {
-        String fname = Emp_First_Name.getText();
-        String mname = Emp_Middle_Name.getText();
-        String lname = Emp_Last_Name.getText();
-        String id = Emp_id.getText();
+    public void SaveButtonAction(ActionEvent event) throws SQLException, IOException {
+        String fname = Emp_First_Name.getText().toUpperCase();
+        String mname = Emp_Middle_Name.getText().toUpperCase();
+        String lname = Emp_Last_Name.getText().toUpperCase();
+        String id = Emp_id.getText().toUpperCase();
         LocalDate DOB = Emp_Birth_Date.getValue();
-        String Designation = Emp_Designation.getText();
+        String Designation = Emp_Designation.getText().toUpperCase();
         LocalDate Hired = Emp_Date_Hired.getValue();
         LocalDate Resign = Emp_Date_Resigned.getValue();
         int Access = Emp_Access.getValue();
-        String Status = Emp_Status.getValue();
-        if(!fname.isEmpty() && !lname.isEmpty() && !id.isEmpty() && DOB!= null && !Designation.isEmpty() && Hired != null){
-            if(!AddEmployeeModel.isEmpIdEsxisting(id)){
-                if(AddEmployeeModel.InsertEmployee(id, fname, mname, lname, Designation, DOB, Hired, Resign, Status, Access)){
+        String Status = Emp_Status.getValue().toUpperCase();
+        if (!fname.isEmpty() && !lname.isEmpty() && !id.isEmpty() && DOB != null && !Designation.isEmpty() && Hired != null) {
+            if (!AddEmployeeModel.isEmpIdEsxisting(id)) {
+                if (AddEmployeeModel.InsertEmployee(id, fname, mname, lname, Designation, DOB, Hired, Resign, Status, Access)) {
                     Alert.setText("Employee Added");
-                }else{
+                } else {
                     Alert.setText("Employee not Added");
                 }
-            }else{
+            } else {
                 Alert.setText("Employee Id Already Taken");
             }
-        }else{
+        } else {
             Alert.setText("Fill out the Necessary Information (*)");
         }
-    } 
- 
+    }
 }
