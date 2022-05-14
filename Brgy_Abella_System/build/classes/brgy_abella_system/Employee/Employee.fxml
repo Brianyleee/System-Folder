@@ -185,7 +185,7 @@
           <RowConstraints maxHeight="459.0" minHeight="10.0" prefHeight="427.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView fx:id="employeeTable" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#displayClick" prefHeight="408.0" prefWidth="795.0" style="-fx-border-radius: 10px; -fx-border-color: #37366FAA; -fx-background-color: transparent;" GridPane.rowIndex="1">
+            <TableView fx:id="employeeTable" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#GetDataOnClick" prefHeight="408.0" prefWidth="795.0" style="-fx-border-radius: 10px; -fx-border-color: #37366FAA; -fx-background-color: transparent;" GridPane.rowIndex="1">
               <columns>
                 <TableColumn fx:id="emp_id" prefWidth="100.0">
                      <graphic>
@@ -232,7 +232,7 @@
                         <Font name="Courier New" size="12.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="RefreshBtn" mnemonicParsing="false" onAction="#RefreshBtnAction" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: white; -fx-border-color: #37366FAA; -fx-border-radius: 20px;" text="Refresh" textFill="#37366f">
+                  <Button fx:id="RefreshBtn" mnemonicParsing="false" onAction="#RefreshBtnAction" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: transparent; -fx-border-color: #37366FAA; -fx-border-radius: 20px;" text="Refresh" textFill="#37366f">
                      <font>
                         <Font name="Courier New" size="12.0" />
                      </font>
@@ -278,13 +278,12 @@
                   <Font name="Courier New" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="viewBtn" mnemonicParsing="false" prefHeight="23.0" prefWidth="104.0" style="-fx-background-color: #37366FAA; -fx-background-radius: 10px;" text="View" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="viewBtn" mnemonicParsing="false" onAction="#ViewBtnAction" prefHeight="23.0" prefWidth="104.0" style="-fx-background-color: #37366FAA; -fx-background-radius: 10px;" text="View" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Courier New" size="12.0" />
                </font>
             </Button>
          </children>
       </HBox>
-      <Label fx:id="trlial" layoutX="251.0" layoutY="28.0" prefHeight="17.0" prefWidth="138.0" text="Label" />
    </children>
 </AnchorPane>

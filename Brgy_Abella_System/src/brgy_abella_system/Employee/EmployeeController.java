@@ -75,8 +75,6 @@ public class EmployeeController implements Initializable {
     private Button editBtn;
     @FXML
     private Button viewBtn;
-    @FXML
-    private Label trlial;
 
     public EmployeeController() {
         Connect = Connector.Connect();
@@ -148,7 +146,7 @@ public class EmployeeController implements Initializable {
         String query = "SELECT * FROM Employee";
         PreparedStatement ps = Connect.prepareStatement(query);
         ResultSet rs = ps.executeQuery();
-        
+
         while (rs.next()) {
             String id, fullname, position, fname, mname, lname;
             id = rs.getString("Employee_Id");
@@ -210,29 +208,56 @@ public class EmployeeController implements Initializable {
     }
 
 //    On process
+    private String Id;
+
     @FXML
-    public void displayClick(MouseEvent event) throws IOException{
-//        Employee person = employeeTable.getSelectionModel().getSelectedItem();
-//        String Id = person.getId();
-//        String fname = person.getFirstName();
-//        String mname = person.getMiddleName();
-//        String lname = person.getLastName();
-//        String position = person.getPosition();
-//        String status = person.getStatus();
-//        int access = person.getAccess();
-//        String dob = person.getDOB();
-//        String hired = person.getHired();
-//        String resigned = person.getResigned();
-//        if (Id != null) {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("View.fxml"));
-//            Parent root = loader.load();
-//            ViewController ViewController = loader.getController();
-//            ViewController.display(fname, mname, lname, Id, dob, access, position, status, hired, resigned);
-//            Stage stage = new Stage();
-//            stage.setScene(new Scene (root));
-//            action.Draggable(stage, root);
-//            stage.show();
-//        }
+    public void GetDataOnClick(MouseEvent event) throws IOException, SQLException {
+        Employee person = employeeTable.getSelectionModel().getSelectedItem();
+        Id = person.getId();
     }
-   
+
+    @FXML
+    private void ViewBtnAction(ActionEvent event) throws SQLException {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT * FROM Employee WHERE Employee_Id = ?";
+        try {
+            ps = Connect.prepareStatement(query);
+            ps.setString(1, Id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                System.out.println(Id);
+                String firstName = rs.getString("First_Name");
+                String middleName = rs.getString("Middle_name");
+                String lastName = rs.getString("Last_Name");
+                String position = rs.getString("Designation");
+                String status = rs.getString("Status");
+                int access = rs.getInt("Access");
+                String dob = rs.getString("DOB");
+                String hired = rs.getString("Date_Hired");
+                String resigned = rs.getString("Date_Resigned");
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("View.fxml"));
+                Parent root = loader.load();
+                ViewController ViewController = loader.getController();
+                ViewController.display(firstName, middleName, lastName, Id, dob, access, position, status, hired, resigned);
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setScene(new Scene(root));
+                action.Draggable(stage, root);
+                stage.show();
+
+            } else {
+                ps.close();
+                rs.close();
+            }
+        } catch (Exception e) {
+            ps.close();
+            rs.close();
+        } finally {
+            ps.close();
+            rs.close();
+        }
+    }
+
 }
