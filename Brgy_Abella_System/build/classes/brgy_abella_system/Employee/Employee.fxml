@@ -239,6 +239,9 @@
                      <HBox.margin>
                         <Insets left="10.0" top="3.2" />
                      </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button fx:id="addEmployeeBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#AddBtnAction" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: #37366FAA;" text="Add Employee" textFill="WHITE">
                      <HBox.margin>
@@ -254,6 +257,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </HBox>

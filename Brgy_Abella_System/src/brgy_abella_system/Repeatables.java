@@ -41,5 +41,6 @@ public class Repeatables {
         window.setScene(new Scene(root));
         window.show();
         Draggable(window, root);
+        
     }
 }

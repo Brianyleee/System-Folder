@@ -9,7 +9,10 @@ import brgy_abella_system.Repeatables;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -39,13 +43,19 @@ public class DashboardController implements Initializable {
     private Button inquiriesBtn;
  @FXML
     private Button LogoutBtn;
+    @FXML
+    private Label Emp_Counter;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        try {
+            Employeecounter();
+        } catch (SQLException ex) {
+            System.exit(0);
+        }
     }
 
     @FXML
@@ -71,5 +81,10 @@ public class DashboardController implements Initializable {
     @FXML
     private void inquiriesBtnAction (ActionEvent event) throws IOException{
         action.ChangeScene("Inquiries/Inquiries.fxml", inquiriesBtn);
+    }
+    
+    private void Employeecounter() throws SQLException{
+        int count = DashboardModel.countExistingEmployee();
+        Emp_Counter.setText(Integer.toString(count));
     }
 }

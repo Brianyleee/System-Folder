@@ -1,5 +1,6 @@
 package brgy_abella_system;
 
+import brgy_abella_system.Employee.ViewController;
 import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
@@ -10,9 +11,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Functions {
-ZoneId defaultZoneId = ZoneId.systemDefault();
+//    ZoneId defaultZoneId = ZoneId.systemDefault();
+    Repeatables action = new Repeatables();
+    
     Connection Connect;
 
     public Functions() {
@@ -231,4 +235,68 @@ ZoneId defaultZoneId = ZoneId.systemDefault();
             ps.close();
         }
     }
+    
+    
+    public boolean UpdateEmployeeInfo(String Id, int Access,String Designation,String fname,String mname,String lname,LocalDate DOB,LocalDate Hired,LocalDate Resign,String Status) throws SQLException{
+        PreparedStatement ps = null;
+        System.out.println(DOB +"\n" + Hired +"\n" + Resign );
+        String query = "UPDATE Employee SET "
+                + "First_Name=?,"
+                + "Middle_Name=?,"
+                + "Last_Name=?,"
+                + "Designation=?,"
+                + "Status=?,"
+                + "DOB=?,"
+                + "Access=?,"
+                + "Date_Hired=?,"
+                + "Date_Resigned=?"
+                + " WHERE Employee_Id=?";
+        try {
+            ps = Connect.prepareStatement(query);
+            ps.setString(1, fname);
+            ps.setString(2, mname);
+            ps.setString(3, lname);
+            ps.setString(4, Designation);
+            ps.setString(5, Status);
+            ps.setString(6, DOB.toString());
+            ps.setInt(7, Access);
+            ps.setString(8, Hired.toString());
+            if(Resign == null){
+                String resigndate = null;
+                ps.setString(9, resigndate);
+            }else{
+                ps.setString(9, Resign.toString());
+            }
+            ps.setString(10, Id);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        } finally {
+            ps.close();
+        }
+    }
+    
+    public int countExistingEmployee() throws SQLException{
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT Employee_Id FROM Employee";
+        int index = 0;
+        try {
+            ps = Connect.prepareStatement(query);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                index++;
+            }
+            return index;
+        } catch (Exception e) {
+            index = 0;
+            return index;
+        } finally {
+            ps.close();
+            rs.close();
+        }
+    }
+    
 }

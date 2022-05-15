@@ -8,6 +8,9 @@ package brgy_abella_system.Employee;
 import brgy_abella_system.Functions;
 import brgy_abella_system.Repeatables;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -29,6 +32,7 @@ import javafx.scene.control.TextField;
 public class EditEmployeeController implements Initializable {
 
     Repeatables action = new Repeatables();
+    Functions EditModel = new Functions();
     ObservableList<String> StatusList = FXCollections.observableArrayList("Active", "Inactive");
     ObservableList<Integer> Access = FXCollections.observableArrayList(0, 1);
     @FXML
@@ -68,17 +72,37 @@ public class EditEmployeeController implements Initializable {
     }
 
     @FXML
-    private void SaveButtonAction(ActionEvent event) {
-        action.Exit(saveBtn);
+    private void SaveButtonAction(ActionEvent event) throws SQLException{
+        String fname = Emp_First_Name.getText().toUpperCase();
+        String mname = Emp_Middle_Name.getText().toUpperCase();
+        String lname = Emp_Last_Name.getText().toUpperCase();
+        String id = Emp_id.getText().toUpperCase();
+        LocalDate DOB = Emp_Birth_Date.getValue();
+        String Designation = Emp_Designation.getText().toUpperCase();
+        LocalDate Hired = Emp_Date_Hired.getValue();
+        LocalDate Resign = Emp_Date_Resigned.getValue();
+        int Access = Emp_Access.getValue();
+        String Status = Emp_Status.getValue().toUpperCase();
+        if (!fname.isEmpty() && !lname.isEmpty() && !id.isEmpty() && DOB != null && !Designation.isEmpty() && Hired != null) {
+                if (EditModel.UpdateEmployeeInfo(id, Access, Designation, fname, mname, lname, DOB, Hired, Resign, Status)) {
+                    Alert.setText("Employee Added");
+                    action.Exit(saveBtn);
+                } else {
+                    Alert.setText("Employee not Added");
+                }
+        } else {
+            Alert.setText("Fill out the Necessary Information (*)");
+        }
     }
 
     @FXML
     private void ExitButtonAction(ActionEvent event) {
+        action.Exit(saveBtn);
     }
 
     public void display(String fname, String mname, String lname, String id, String DB, int acc, String Designation, String Status, String emp_hired, String emp_resigned) {
 
-        Emp_First_Name.setText(lname);
+        Emp_First_Name.setText(fname);
         Emp_Middle_Name.setText(mname);
         Emp_Last_Name.setText(lname);
         Emp_id.setText(id);

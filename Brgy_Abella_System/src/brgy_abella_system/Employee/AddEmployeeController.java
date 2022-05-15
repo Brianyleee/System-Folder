@@ -93,6 +93,7 @@ public class AddEmployeeController implements Initializable {
             if (!AddEmployeeModel.isEmpIdEsxisting(id)) {
                 if (AddEmployeeModel.InsertEmployee(id, fname, mname, lname, Designation, DOB, Hired, Resign, Status, Access)) {
                     Alert.setText("Employee Added");
+                    action.Exit(saveBtn);
                 } else {
                     Alert.setText("Employee not Added");
                 }

@@ -37,7 +37,7 @@ import javafx.stage.StageStyle;
 public class EmployeeController implements Initializable {
 
     ObservableList<Employee> EmployeeList = FXCollections.observableArrayList();
-    public Functions EmployeeModel = new Functions();
+    Functions EmployeeModel = new Functions();
     Repeatables action = new Repeatables();
 
     Connection Connect;
@@ -208,7 +208,7 @@ public class EmployeeController implements Initializable {
     }
 
 //    On process
-    private String Id;
+    public String Id;
 
     @FXML
     public void GetDataOnClick(MouseEvent event) throws IOException, SQLException {
