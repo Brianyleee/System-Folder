@@ -273,15 +273,21 @@
       </Label>
       <HBox alignment="CENTER" layoutX="207.0" layoutY="504.0" prefHeight="34.0" prefWidth="795.0" spacing="20.0">
          <children>
-            <Button fx:id="editBtn" mnemonicParsing="false" prefHeight="23.0" prefWidth="104.0" style="-fx-background-color: #37366FAA; -fx-background-radius: 10px;" text="Edit" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="editBtn" mnemonicParsing="false" onAction="#editBtnAction" prefHeight="23.0" prefWidth="104.0" style="-fx-background-color: #37366FAA; -fx-background-radius: 10px;" text="Edit" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Courier New" size="12.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Button fx:id="viewBtn" mnemonicParsing="false" onAction="#ViewBtnAction" prefHeight="23.0" prefWidth="104.0" style="-fx-background-color: #37366FAA; -fx-background-radius: 10px;" text="View" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Courier New" size="12.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
          </children>
       </HBox>

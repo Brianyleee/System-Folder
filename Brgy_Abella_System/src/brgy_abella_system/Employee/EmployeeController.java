@@ -213,7 +213,12 @@ public class EmployeeController implements Initializable {
     @FXML
     public void GetDataOnClick(MouseEvent event) throws IOException, SQLException {
         Employee person = employeeTable.getSelectionModel().getSelectedItem();
-        Id = person.getId();
+        try{
+            Id = person.getId();
+        }catch(Exception e){
+            Id = null;
+        }
+        
     }
 
     @FXML
@@ -226,7 +231,6 @@ public class EmployeeController implements Initializable {
             ps.setString(1, Id);
             rs = ps.executeQuery();
             if (rs.next()) {
-                System.out.println(Id);
                 String firstName = rs.getString("First_Name");
                 String middleName = rs.getString("Middle_name");
                 String lastName = rs.getString("Last_Name");
@@ -252,6 +256,51 @@ public class EmployeeController implements Initializable {
                 rs.close();
             }
         } catch (Exception e) {
+            ps.close();
+            rs.close();
+        } finally {
+            ps.close();
+            rs.close();
+        }
+    }
+
+    @FXML
+    private void editBtnAction(ActionEvent event) throws SQLException {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT * FROM Employee WHERE Employee_Id = ?";
+        try {
+            ps = Connect.prepareStatement(query);
+            ps.setString(1, Id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                String firstName = rs.getString("First_Name");
+                String middleName = rs.getString("Middle_name");
+                String lastName = rs.getString("Last_Name");
+                String position = rs.getString("Designation");
+                String status = rs.getString("Status");
+                int access = rs.getInt("Access");
+                String dob = rs.getString("DOB");
+                String hired = rs.getString("Date_Hired");
+                String resigned = rs.getString("Date_Resigned");
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("EditEmployee.fxml"));
+                Parent root = loader.load();
+                EditEmployeeController EditEmployeeController = loader.getController();
+                EditEmployeeController.display(firstName, middleName, lastName, Id, dob, access, position, status, hired, resigned);
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setScene(new Scene(root));
+                action.Draggable(stage, root);
+                stage.show();
+
+            } else {
+                ps.close();
+                rs.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
             ps.close();
             rs.close();
         } finally {

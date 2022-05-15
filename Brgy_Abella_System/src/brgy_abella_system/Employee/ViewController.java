@@ -40,14 +40,6 @@ public class ViewController implements Initializable {
     private Label name;
     @FXML
     private Label position;
-
-    public ViewController() {
-        Connect = Connector.Connect();
-        if (Connect == null) {
-            System.exit(0);
-        }
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
