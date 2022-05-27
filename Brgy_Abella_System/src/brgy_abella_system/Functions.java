@@ -147,6 +147,52 @@ public class Functions {
             rs.close();
         }
     }
+    
+//    Registration Validating if the Case No. is already taken.
+    public boolean isCaseNoExisting(String Case_No) throws SQLException {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT * FROM Blotter WHERE Case_No=?";
+        try {
+            ps = Connect.prepareStatement(query);
+            ps.setString(1, Case_No);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        } finally {
+            ps.close();
+            rs.close();
+        }
+    }
+
+//    Registration Validating if the Complainant ID is already taken.
+    public boolean isComplainantIDExisting(String Complainant_Id) throws SQLException {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT * FROM Blotter WHERE Complainant_Id=?";
+        try {
+            ps = Connect.prepareStatement(query);
+            ps.setString(1, Complainant_Id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        } finally {
+            ps.close();
+            rs.close();
+        }
+    }
 
 //    Adding the registered Account in the Database
     public boolean InsertAccount(String Emp_Id, String Username, String Password) throws SQLException {
@@ -299,4 +345,125 @@ public class Functions {
         }
     }
     
+//    Add Blotter File in the Database Table BLOTTER
+    public boolean FileBlotter(String case_Number, String employee_ID, LocalDate complaint_Date, String complaint, String solution,
+                               String complainant_ID_C, String first_Name_C, String middle_Name_C, String last_Name_C, String contact_Number_C, String street_C, String barangay_C, String city_C, String province_C,
+                               String first_Name_D, String middle_Name_D, String last_Name_D, String contact_Number_D, String street_D, String barangay_D, String city_D, String province_D) throws SQLException {
+        PreparedStatement ps = null;
+        String query = "INSERT INTO Blotter (Case_No, Employee_Id, Complaint_Date, Complaint, Solution, "
+                + "Complainant_Id, First_Name_C, Middle_Name_C, Last_Name_C, Contact_No_C, Street_C, Barangay_C, City_C, Province_C, "
+                + "First_Name_D, Middle_Name_D, Last_Name_D, Contact_No_D, Street_D, Barangay_D, City_D, Province_D) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try {
+            ps = Connect.prepareStatement(query);
+            ps.setString(1, case_Number);
+            ps.setString(2, employee_ID);
+            ps.setString(3, complaint_Date.toString());
+            ps.setString(4, complaint);
+            ps.setString(5, solution);
+            ps.setString(6, complainant_ID_C);
+            ps.setString(7, first_Name_C);
+            ps.setString(8, middle_Name_C);
+            ps.setString(9, last_Name_C);
+            ps.setString(10, contact_Number_C);
+            ps.setString(11, street_C);
+            ps.setString(12, barangay_C);
+            ps.setString(13, city_C);
+            ps.setString(14, province_C);
+            ps.setString(15, first_Name_D);
+            ps.setString(16, middle_Name_D);
+            ps.setString(17, last_Name_D);
+            ps.setString(18, contact_Number_D);
+            ps.setString(19, street_D);
+            ps.setString(20, barangay_D);
+            ps.setString(21, city_D);
+            ps.setString(22, province_D);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            return false;
+        } finally {
+            ps.close();
+        }
+    }  
+    
+//    Update Blotter File in the Database Table BLOTTER    
+    public boolean UpdateBlotterFile(String case_Number, String employee_ID, LocalDate complaint_Date, String complaint, String solution,
+                               String complainant_ID_C, String first_Name_C, String middle_Name_C, String last_Name_C, String contact_Number_C, String street_C, String barangay_C, String city_C, String province_C,
+                               String first_Name_D, String middle_Name_D, String last_Name_D, String contact_Number_D, String street_D, String barangay_D, String city_D, String province_D) throws SQLException{
+        PreparedStatement ps = null;
+        String query = "UPDATE Blotter SET "
+                + "Complaint_Date=?,"
+                + "Complaint=?,"
+                + "Solution=?,"
+                + "First_Name_C=?,"
+                + "Middle_Name_C=?,"
+                + "Last_Name_C=?,"
+                + "Contact_No_C=?,"
+                + "Street_C=?,"
+                + "Barangay_C=?,"
+                + "City_C=?,"
+                + "Province_C=?,"
+                + "First_Name_D=?,"
+                + "Middle_Name_D=?,"
+                + "Last_Name_D=?,"
+                + "Contact_No_D=?,"
+                + "Street_D=?,"
+                + "Barangay_D=?,"
+                + "City_D=?,"
+                + "Province_D=?"
+                + " WHERE Case_No=? AND Employee_Id=? AND Complainant_Id=?";
+        try {
+            ps = Connect.prepareStatement(query);
+            ps.setString(1, complaint_Date.toString());
+            ps.setString(2, complaint);
+            ps.setString(3, solution);
+            ps.setString(4, first_Name_C);
+            ps.setString(5, middle_Name_C);
+            ps.setString(6, last_Name_C);
+            ps.setString(7, contact_Number_C);
+            ps.setString(8, street_C);
+            ps.setString(9, barangay_C);
+            ps.setString(10, city_C);
+            ps.setString(11, province_C);
+            ps.setString(12, first_Name_D);
+            ps.setString(13, middle_Name_D);
+            ps.setString(14, last_Name_D);
+            ps.setString(15, contact_Number_D);
+            ps.setString(16, street_D);
+            ps.setString(17, barangay_D);
+            ps.setString(18, city_D);
+            ps.setString(19, province_D);
+            ps.setString(20, case_Number);
+            ps.setString(21, employee_ID);
+            ps.setString(22, complainant_ID_C);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            return false;
+        } finally {
+            ps.close();
+        }
+    }
+    
+//    Counts the number of total Blotters filed  
+    public int countBlottersFiled() throws SQLException{
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT Case_No FROM Blotter";
+        int index = 0;
+        try {
+            ps = Connect.prepareStatement(query);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                index++;
+            }
+            return index;
+        } catch (Exception e) {
+            index = 0;
+            return index;
+        } finally {
+            ps.close();
+            rs.close();
+        }
+    }
 }

@@ -41,10 +41,12 @@ public class DashboardController implements Initializable {
     private Button blotterBtn;
     @FXML
     private Button inquiriesBtn;
- @FXML
+    @FXML
     private Button LogoutBtn;
     @FXML
     private Label Emp_Counter;
+    @FXML
+    private Label Blotter_Counter;
 
     /**
      * Initializes the controller class.
@@ -53,6 +55,7 @@ public class DashboardController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             Employeecounter();
+            BlotterCounter();
         } catch (SQLException ex) {
             System.exit(0);
         }
@@ -86,5 +89,10 @@ public class DashboardController implements Initializable {
     private void Employeecounter() throws SQLException{
         int count = DashboardModel.countExistingEmployee();
         Emp_Counter.setText(Integer.toString(count));
+    }
+    
+    private void BlotterCounter() throws SQLException {
+        int count = DashboardModel.countBlottersFiled();
+        Blotter_Counter.setText(Integer.toString(count));
     }
 }

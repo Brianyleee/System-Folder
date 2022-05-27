@@ -14,12 +14,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="562.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="brgy_abella_system.Employee.AddEmployeeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="562.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="brgy_abella_system.Employee.AddEmployeeController">
    <children>
       <Pane layoutX="-58.0" layoutY="-128.0" prefHeight="284.0" prefWidth="145.0" style="-fx-rotate: 50px; -fx-background-color: #373462;" />
       <ImageView fitHeight="85.0" fitWidth="108.0" layoutX="259.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../img/Logo.png" />
+            <Image url="@../../img/Abella-Logo.png" />
          </image>
       </ImageView>
       <VBox layoutX="49.0" layoutY="202.0" prefHeight="120.0" prefWidth="238.0" spacing="20.0">

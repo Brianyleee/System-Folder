@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="1028.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="brgy_abella_system.Blotter.BlotterController">
+   <children>
+      <VBox prefHeight="546.0" prefWidth="190.0" spacing="25.0" style="-fx-background-color: #37366F99;">
+         <children>
+            <Pane prefHeight="97.0" prefWidth="244.0">
+               <children>
+                  <ImageView fitHeight="32.0" fitWidth="37.0" layoutX="75.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/User.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" graphicTextGap="0.0" layoutX="13.0" layoutY="71.0" prefHeight="17.0" prefWidth="158.0" text="Username" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Pane>
+            <Button fx:id="homeBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#homeBtnAction" prefHeight="29.0" prefWidth="268.0" style="-fx-background-color: transparent;" text="HOME" textFill="WHITE">
+               <font>
+                  <Font name="Bookman Old Style" size="10.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/Home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Button>
+            <Button fx:id="residentBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#residentBtnAction" prefHeight="28.0" prefWidth="272.0" style="-fx-background-color: transparent;" text="RESIDENT" textFill="WHITE">
+               <font>
+                  <Font name="Bookman Old Style" size="10.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/Resident.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Button>
+            <Button fx:id="employeeBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#employeeBtnAction" prefHeight="29.0" prefWidth="222.0" style="-fx-background-color: transparent;" text="EMPLOYEE" textFill="WHITE">
+               <font>
+                  <Font name="Bookman Old Style" size="10.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/Employee.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Button>
+            <Button fx:id="blotterBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#blotterBtnAction" prefHeight="30.0" prefWidth="287.0" style="-fx-background-color: #37366FAA;" text="BLOTTER" textFill="WHITE">
+               <font>
+                  <Font name="Bookman Old Style" size="10.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/Blotter.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Button>
+            <Button fx:id="inquiriesBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#inquiriesBtnAction" prefHeight="32.0" prefWidth="288.0" style="-fx-background-color: transparent;" text="INQUIRIES" textFill="WHITE">
+               <font>
+                  <Font name="Bookman Old Style" size="10.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/Inquiries.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Button>
+            <Button fx:id="LogoutBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#LogoutButtonAction" prefHeight="34.0" prefWidth="316.0" style="-fx-background-color: transparent;" text="LOGOUT" textFill="WHITE">
+               <font>
+                  <Font name="Bookman Old Style" size="10.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/Logout.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets top="95.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Button>
+         </children>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <padding>
+            <Insets bottom="10.0" />
+         </padding>
+      </VBox>
+      <GridPane layoutX="206.0" layoutY="62.0" prefHeight="446.0" prefWidth="795.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="158.0" minHeight="0.0" prefHeight="32.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="459.0" minHeight="10.0" prefHeight="427.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TableView fx:id="blotterTable" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#GetDataOnClick" prefHeight="408.0" prefWidth="795.0" style="-fx-border-radius: 10px; -fx-border-color: #37366FAA; -fx-background-color: transparent;" GridPane.rowIndex="1">
+              <columns>
+                <TableColumn fx:id="caseNo" prefWidth="100.0">
+                     <graphic>
+                        <Label text="Case No." textFill="#37366f" />
+                     </graphic>
+                  </TableColumn>
+                <TableColumn fx:id="complainant" prefWidth="248.0">
+                     <graphic>
+                        <Label text="Complainant" textFill="#37366f" />
+                     </graphic>
+                  </TableColumn>
+                  <TableColumn fx:id="defendant" prefWidth="248.0">
+                     <graphic>
+                        <Label text="Defendant" textFill="#37366f" />
+                     </graphic>
+                  </TableColumn>
+                  <TableColumn fx:id="date" prefWidth="195.0">
+                     <graphic>
+                        <Label text="Date" textFill="#37366f" />
+                     </graphic>
+                  </TableColumn>
+              </columns>
+            </TableView>
+            <HBox prefHeight="52.0" prefWidth="795.0">
+               <children>
+                  <ImageView fitHeight="23.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/Search.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" top="7.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <TextField fx:id="searchBar" onKeyReleased="#SearchData" prefHeight="25.0" prefWidth="436.0" promptText="Search for Existing Blotter">
+                     <HBox.margin>
+                        <Insets top="3.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Courier New" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="RefreshBtn" mnemonicParsing="false" onAction="#RefreshBtnAction" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: transparent; -fx-border-color: #37366FAA; -fx-border-radius: 20px;" text="Refresh" textFill="#37366f">
+                     <font>
+                        <Font name="Courier New" size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" top="3.2" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="addBlotterBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#AddBtnAction" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: #37366FAA;" text="Add Blotter" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="6.0" top="3.2" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Courier New Bold" size="12.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="13.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/Add.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </GridPane>
+      <Label alignment="CENTER" graphicTextGap="10.0" layoutX="128.0" layoutY="14.0" prefHeight="45.0" prefWidth="825.0" text="ABELLA BLOTTER LIST" textFill="#37366f">
+         <font>
+            <Font name="Courier New" size="15.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="45.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/Abella-Logo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      <HBox alignment="CENTER" layoutX="207.0" layoutY="504.0" prefHeight="34.0" prefWidth="795.0" spacing="20.0">
+         <children>
+            <Button fx:id="editBtn" mnemonicParsing="false" onAction="#editBtnAction" prefHeight="23.0" prefWidth="104.0" style="-fx-background-color: #37366FAA; -fx-background-radius: 10px;" text="Edit" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="viewBtn" mnemonicParsing="false" onAction="#ViewBtnAction" prefHeight="23.0" prefWidth="104.0" style="-fx-background-color: #37366FAA; -fx-background-radius: 10px;" text="View" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

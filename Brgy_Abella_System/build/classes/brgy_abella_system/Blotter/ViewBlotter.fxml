@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="735.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="brgy_abella_system.Blotter.ViewBlotterController">
+   <children>
+      <Label alignment="CENTER" layoutX="112.0" layoutY="42.0" prefHeight="16.0" prefWidth="342.0" text="Blotter Information" textFill="#37366f">
+         <font>
+            <Font name="Courier New Italic" size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="90.0" fitWidth="119.0" layoutX="51.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/Abella-Logo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="cancelBtn" layoutX="648.0" layoutY="691.0" mnemonicParsing="false" onAction="#cancelBtnAction" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #37366f; -fx-border-color: transparent;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="Courier New" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label alignment="CENTER" layoutX="418.0" layoutY="173.0" prefHeight="17.0" prefWidth="186.0" text="Defendant" textFill="#37366f">
+         <font>
+            <Font name="Courier New Italic" size="12.0" />
+         </font>
+      </Label>
+      <VBox layoutX="418.0" layoutY="201.0" prefHeight="266.0" prefWidth="139.0" spacing="20.0">
+         <children>
+            <Label text="First Name" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Middle Name" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Last Name" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Contact No." textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Street" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Barangay" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label text="City" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Province" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="557.0" layoutY="201.0" prefHeight="266.0" prefWidth="201.0" spacing="13.0">
+         <children>
+            <Label fx:id="D_First_Name" prefHeight="15.0" prefWidth="228.0" style="-fx-border-color: #37366f; -fx-border-radius: 5px;" text="xxxxxxxxxxxxxxxxx" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="5.0" top="2.0" />
+               </padding>
+            </Label>
+            <Label fx:id="D_Middle_Name" prefHeight="15.0" prefWidth="234.0" style="-fx-border-color: #37366f; -fx-border-radius: 5px;" text="xxxxxxxxxxxxxxxxx" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="5.0" top="2.0" />
+               </padding>
+            </Label>
+            <Label fx:id="D_Last_Name" prefHeight="15.0" prefWidth="251.0" style="-fx-border-color: #37366f; -fx-border-radius: 5px;" text="xxxxxxxxxxxxxxxxx" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="5.0" top="2.0" />
+               </padding>
+            </Label>
+            <Label fx:id="D_Contact_No" prefHeight="15.0" prefWidth="342.0" style="-fx-border-color: #37366f; -fx-border-radius: 5px;" text="xxxxxxxxxxxxxxxxx" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="5.0" top="2.0" />
+               </padding>
+            </Label>
+            <Label fx:id="D_Street" prefHeight="15.0" prefWidth="286.0" style="-fx-border-color: #37366f; -fx-border-radius: 5px;" text="xxxxxxxxxxxxxxxxx" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="5.0" top="2.0" />
+               </padding>
+            </Label>
+            <Label fx:id="D_Barangay" prefHeight="15.0" prefWidth="345.0" style="-fx-border-color: #37366f; -fx-border-radius: 5px;" text="xxxxxxxxxxxxxxxxx" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="5.0" top="2.0" />
+               </padding>
+            </Label>
+            <Label fx:id="D_City" prefHeight="15.0" prefWidth="345.0" style="-fx-border-color: #37366f; -fx-border-radius: 5px;" text="xxxxxxxxxxxxxxxxx" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="5.0" top="2.0" />
+               </padding>
+            </Label>
+            <Label fx:id="D_Province" prefHeight="15.0" prefWidth="345.0" style="-fx-border-color: #37366f; -fx-border-radius: 5px;" text="xxxxxxxxxxxxxxxxx" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="5.0" top="2.0" />
+               </padding>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="236.0" layoutY="71.0" prefHeight="85.0" prefWidth="109.0" spacing="15.0">
+         <children>
+            <Label text="Case No." textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Employee ID" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Complainant ID" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Label alignment="CENTER" layoutX="51.0" layoutY="485.0" prefHeight="17.0" prefWidth="186.0" text="Details" textFill="#37366f">
+         <font>
+            <Font name="Courier New Italic" size="12.0" />
+         </font>
+      </Label>
+      <VBox layoutX="51.0" layoutY="508.0" prefHeight="164.0" prefWidth="139.0" spacing="20.0">
+         <children>
+            <Label text="Complaint Date" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Complaint" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label text=" " textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Solution" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="190.0" layoutY="508.0" prefHeight="181.0" prefWidth="568.0" spacing="13.0">
+         <children>
+            <Label fx:id="Complaint_Date" prefHeight="15.0" prefWidth="228.0" style="-fx-border-color: #37366f; -fx-border-radius: 5px;" text="xxxxxxxxxxxxxxxxx" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="5.0" top="2.0" />
+               </padding>
+            </Label>
+            <TextArea fx:id="Complaint" editable="false" prefHeight="53.0" prefWidth="568.0" promptText="xxxxxxxxxxxxxxxxx">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </TextArea>
+            <TextArea fx:id="Solution" editable="false" prefHeight="53.0" prefWidth="568.0" promptText="xxxxxxxxxxxxxxxxx">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </TextArea>
+         </children>
+      </VBox>
+      <Label alignment="CENTER" layoutX="51.0" layoutY="173.0" prefHeight="17.0" prefWidth="186.0" text="Complainant" textFill="#37366f">
+         <font>
+            <Font name="Courier New Italic" size="12.0" />
+         </font>
+      </Label>
+      <VBox layoutX="51.0" layoutY="201.0" prefHeight="266.0" prefWidth="139.0" spacing="20.0">
+         <children>
+            <Label text="First Name" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Middle Name" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Last Name" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Contact No." textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Street" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Barangay" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label text="City" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Province" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="190.0" layoutY="201.0" prefHeight="266.0" prefWidth="201.0" spacing="13.0">
+         <children>
+            <Label fx:id="C_First_Name" prefHeight="15.0" prefWidth="228.0" style="-fx-border-color: #37366f; -fx-border-radius: 5px;" text="xxxxxxxxxxxxxxxxx" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="5.0" top="2.0" />
+               </padding>
+            </Label>
+            <Label fx:id="C_Middle_Name" prefHeight="15.0" prefWidth="234.0" style="-fx-border-color: #37366f; -fx-border-radius: 5px;" text="xxxxxxxxxxxxxxxxx" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="5.0" top="2.0" />
+               </padding>
+            </Label>
+            <Label fx:id="C_Last_Name" prefHeight="15.0" prefWidth="251.0" style="-fx-border-color: #37366f; -fx-border-radius: 5px;" text="xxxxxxxxxxxxxxxxx" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="5.0" top="2.0" />
+               </padding>
+            </Label>
+            <Label fx:id="C_Contact_No" prefHeight="15.0" prefWidth="342.0" style="-fx-border-color: #37366f; -fx-border-radius: 5px;" text="xxxxxxxxxxxxxxxxx" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="5.0" top="2.0" />
+               </padding>
+            </Label>
+            <Label fx:id="C_Street" prefHeight="15.0" prefWidth="286.0" style="-fx-border-color: #37366f; -fx-border-radius: 5px;" text="xxxxxxxxxxxxxxxxx" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="5.0" top="2.0" />
+               </padding>
+            </Label>
+            <Label fx:id="C_Barangay" prefHeight="15.0" prefWidth="345.0" style="-fx-border-color: #37366f; -fx-border-radius: 5px;" text="xxxxxxxxxxxxxxxxx" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="5.0" top="2.0" />
+               </padding>
+            </Label>
+            <Label fx:id="C_City" prefHeight="15.0" prefWidth="345.0" style="-fx-border-color: #37366f; -fx-border-radius: 5px;" text="xxxxxxxxxxxxxxxxx" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="5.0" top="2.0" />
+               </padding>
+            </Label>
+            <Label fx:id="C_Province" prefHeight="15.0" prefWidth="345.0" style="-fx-border-color: #37366f; -fx-border-radius: 5px;" text="xxxxxxxxxxxxxxxxx" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="2.0" left="5.0" top="2.0" />
+               </padding>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="352.0" layoutY="71.0" prefHeight="85.0" prefWidth="109.0" spacing="15.0">
+         <children>
+            <Label fx:id="CaseNumber" text="Case No." textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="EmployeeID" text="Employee ID" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="ComplainantID" text="Complainant ID" textFill="#37366f">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

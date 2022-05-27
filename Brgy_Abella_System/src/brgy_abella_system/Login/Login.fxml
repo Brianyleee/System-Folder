@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="brgy_abella_system.Login.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="brgy_abella_system.Login.LoginController">
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="275.0" style="-fx-background-color: #37366FCC;" BorderPane.alignment="CENTER">
          <children>
@@ -22,7 +22,7 @@
             </Label>
             <ImageView fitHeight="86.0" fitWidth="78.0" layoutX="96.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../img/Logo.png" />
+                  <Image url="@../../img/Abella-Logo.png" />
                </image>
             </ImageView>
             <Label layoutX="75.0" layoutY="212.0" text="Abella" textFill="WHITE">

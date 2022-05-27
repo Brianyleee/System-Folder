@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="1063.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="brgy_abella_system.Blotter.AddBlotterController">
+   <children>
+      <Pane layoutX="-58.0" layoutY="-128.0" prefHeight="284.0" prefWidth="145.0" style="-fx-rotate: 50px; -fx-background-color: #373462;" />
+      <ImageView fitHeight="85.0" fitWidth="108.0" layoutX="510.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/Abella-Logo.png" />
+         </image>
+      </ImageView>
+      <VBox layoutX="49.0" layoutY="237.0" prefHeight="360.0" prefWidth="238.0" spacing="20.0">
+         <children>
+            <TextField fx:id="Blotter_Complainant_ID_C" promptText="Complainant ID *" style="-fx-border-color: #373462;" />
+            <TextField fx:id="Blotter_First_Name_C" promptText="First Name *" style="-fx-border-color: #373462;" />
+            <TextField fx:id="Blotter_Middle_Name_C" promptText="Middle Name *" style="-fx-border-color: #373462;" />
+            <TextField fx:id="Blotter_Last_Name_C" promptText="Last Name *" style="-fx-border-color: #373462;" />
+            <TextField fx:id="Blotter_Contact_No_C" promptText="Contact No *" style="-fx-border-color: #373462;" />
+            <TextField fx:id="Blotter_Street_C" promptText="Street *" style="-fx-border-color: #373462;" />
+            <TextField fx:id="Blotter_Barangay_C" promptText="Barangay *" style="-fx-border-color: #373462;" />
+            <TextField fx:id="Blotter_City_C" promptText="City *" style="-fx-border-color: #373462;" />
+            <TextField fx:id="Blotter_Province_C" promptText="Province *" style="-fx-border-color: #373462;" />
+         </children>
+      </VBox>
+      <VBox layoutX="588.0" layoutY="238.0" prefHeight="360.0" prefWidth="418.0" spacing="20.0">
+         <children>
+            <TextField fx:id="Blotter_Case_No" promptText="Case No *" style="-fx-border-color: #373462;" />
+            <TextField fx:id="Blotter_Employee_ID" promptText="Employee ID *" style="-fx-border-color: #373462;" />
+            <DatePicker fx:id="Blotter_Complaint_Date" prefHeight="25.0" prefWidth="255.0" promptText="Complaint Date *" style="-fx-border-color: #373462;" />
+            <TextArea fx:id="Blotter_Complaint" maxWidth="-Infinity" prefHeight="130.0" prefWidth="418.0" promptText="Complaint *" />
+            <TextArea fx:id="Blotter_Solution" maxWidth="-Infinity" prefHeight="130.0" prefWidth="418.0" promptText="Solution *" />
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" layoutX="678.0" layoutY="623.0" prefHeight="35.0" prefWidth="238.0" spacing="50.0">
+         <children>
+            <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#SaveButtonAction" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: #373462; -fx-background-radius: 20px; -fx-border-radius: 20px;" text="Save" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#ExitButtonAction" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: #373462; -fx-background-radius: 20px; -fx-border-radius: 20px;" text="Cancel" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children>
+      </HBox>
+      <Label fx:id="Alert" alignment="CENTER" layoutX="330.0" layoutY="140.0" prefHeight="17.0" prefWidth="446.0" textFill="RED">
+         <font>
+            <Font name="Courier New" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="459.0" layoutY="106.0" text="Brgy. Abella Blotter Form" textFill="#373462">
+         <font>
+            <Font name="Candara Light" size="18.0" />
+         </font>
+      </Label>
+      <Pane layoutX="987.0" layoutY="603.0" prefHeight="237.0" prefWidth="124.0" style="-fx-rotate: 50px; -fx-background-color: #373462;" />
+      <VBox layoutX="315.0" layoutY="237.0" prefHeight="360.0" prefWidth="238.0" spacing="20.0">
+         <children>
+            <TextField fx:id="Blotter_First_Name_D" promptText="First Name *" style="-fx-border-color: #373462;" />
+            <TextField fx:id="Blotter_Middle_Name_D" promptText="Middle Name *" style="-fx-border-color: #373462;" />
+            <TextField fx:id="Blotter_Last_Name_D" promptText="Last Name *" style="-fx-border-color: #373462;" />
+            <TextField fx:id="Blotter_Contact_No_D" promptText="Contact No *" style="-fx-border-color: #373462;" />
+            <TextField fx:id="Blotter_Street_D" promptText="Street *" style="-fx-border-color: #373462;" />
+            <TextField fx:id="Blotter_Barangay_D" promptText="Barangay *" style="-fx-border-color: #373462;" />
+            <TextField fx:id="Blotter_City_D" promptText="City *" style="-fx-border-color: #373462;" />
+            <TextField fx:id="Blotter_Province_D" promptText="Province *" style="-fx-border-color: #373462;" />
+         </children>
+      </VBox>
+      <Label layoutX="49.0" layoutY="196.0" text="Complainant" textFill="#373462">
+         <font>
+            <Font name="Candara Light" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="315.0" layoutY="196.0" text="Defendant" textFill="#373462">
+         <font>
+            <Font name="Candara Light" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="588.0" layoutY="196.0" text="Details" textFill="#373462">
+         <font>
+            <Font name="Candara Light" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
