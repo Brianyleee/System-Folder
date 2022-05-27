@@ -211,7 +211,7 @@ public class EmployeeController implements Initializable {
     public String Id;
 
     @FXML
-    public void GetDataOnClick(MouseEvent event) throws IOException, SQLException {
+    public void GetDataOnClick(MouseEvent event){
         Employee person = employeeTable.getSelectionModel().getSelectedItem();
         try{
             Id = person.getId();
