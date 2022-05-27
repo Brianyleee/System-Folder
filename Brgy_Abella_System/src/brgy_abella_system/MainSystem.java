@@ -21,6 +21,7 @@ public class MainSystem extends Application {
         stage.show();
         Repeatables action = new Repeatables();
         action.Draggable(stage, root);
+        System.out.println("changes");
     }
 
 
