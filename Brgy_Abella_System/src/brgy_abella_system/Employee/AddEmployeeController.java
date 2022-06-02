@@ -65,7 +65,7 @@ public class AddEmployeeController implements Initializable {
     private TextField Emp_id;
     @FXML
     private Button saveBtn;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Emp_Status.setItems(StatusList);
@@ -87,15 +87,27 @@ public class AddEmployeeController implements Initializable {
         String Designation = Emp_Designation.getText().toUpperCase();
         LocalDate Hired = Emp_Date_Hired.getValue();
         LocalDate Resign = Emp_Date_Resigned.getValue();
-        int Access = Emp_Access.getValue();
-        String Status = Emp_Status.getValue().toUpperCase();
-        if (!fname.isEmpty() && !lname.isEmpty() && !id.isEmpty() && DOB != null && !Designation.isEmpty() && Hired != null) {
+        
+        String Status;
+        if(Emp_Status.getValue() == null){
+            Status = "";
+        }else{
+            Status = Emp_Status.getValue().toUpperCase();
+        }
+        int Access;
+        if (Emp_Access.getValue() == null) {
+            Access = 3;
+        } else {
+            Access = Emp_Access.getValue();
+        }
+
+        if (!fname.isEmpty() || !lname.isEmpty() || !id.isEmpty() || DOB != null || !Designation.isEmpty() || Hired != null || !Status.isEmpty() || Access != 3) {
             if (!AddEmployeeModel.isEmpIdEsxisting(id)) {
                 if (AddEmployeeModel.InsertEmployee(id, fname, mname, lname, Designation, DOB, Hired, Resign, Status, Access)) {
                     Alert.setText("Employee Added");
                     action.Exit(saveBtn);
                 } else {
-                    Alert.setText("Employee not Added");
+                    Alert.setText("Fill out the Necessary Information (*)");
                 }
             } else {
                 Alert.setText("Employee Id Already Taken");
