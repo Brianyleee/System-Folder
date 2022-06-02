@@ -170,29 +170,46 @@ public class BlotterController implements Initializable {
         BlotterList.clear();
         String query = "SELECT * FROM Blotter WHERE Case_No LIKE ? OR"
                 + " Last_Name_C LIKE ? OR"
+                + " Middle_Name_C LIKE ? OR"
+                + " First_Name_C LIKE ? OR"
                 + " Last_Name_D LIKE ? OR"
+                + " Middle_Name_D LIKE ? OR"
+                + " First_Name_D LIKE ? OR"
                 + " Complaint_Date LIKE ?";
         PreparedStatement ps = Connect.prepareStatement(query);
         ps.setString(1, "%" + Search + "%");
         ps.setString(2, "%" + Search + "%");
         ps.setString(3, "%" + Search + "%");
         ps.setString(4, "%" + Search + "%");
+        ps.setString(5, "%" + Search + "%");
+        ps.setString(6, "%" + Search + "%");
+        ps.setString(7, "%" + Search + "%");
+        ps.setString(8, "%" + Search + "%");
         ResultSet rs = ps. executeQuery();
         
         try {
             while (rs.next()) {
-                String caseNo, lNameC, lNameD, comDate;
+                String caseNo, lNameC,mNameC,fNameC, lNameD,mNameD,fNameD, comDate,fullNameC,fullNameD;
                 caseNo = rs.getString("Case_No");
                 lNameC = rs.getString("Last_Name_C");
+                mNameC = rs.getString("Middle_Name_C");
+                fNameC = rs.getString("First_Name_C");
+            
                 lNameD = rs.getString("Last_Name_D");
+                mNameD = rs.getString("Middle_Name_D");
+                fNameD = rs.getString("First_Name_D");
+            
                 comDate = rs.getString("Complaint_Date");
-
-                BlotterList.add(new Blotter(caseNo, lNameC, lNameD, comDate));
+            
+                fullNameC = lNameC+", "+fNameC+" "+mNameC.charAt(0)+".";
+                fullNameD = lNameD+", "+fNameD+" "+mNameD.charAt(0)+".";
+            
+                BlotterList.add(new Blotter(caseNo, fullNameC, fullNameD, comDate));
                 blotterTable.setItems(BlotterList);
             }
             caseNo.setCellValueFactory(new PropertyValueFactory<>("caseNo"));
-            complainant.setCellValueFactory(new PropertyValueFactory<>("lastNameC"));
-            defendant.setCellValueFactory(new PropertyValueFactory<>("lastNameD"));
+            complainant.setCellValueFactory(new PropertyValueFactory<>("fullNameC"));
+            defendant.setCellValueFactory(new PropertyValueFactory<>("fullNameD"));
             date.setCellValueFactory(new PropertyValueFactory<>("complaintDate"));
         } catch (Exception e) {
             System.out.println(e);
