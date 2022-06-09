@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="703.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="brgy_abella_system.FinancialAid.ViewRecipientsController">
+   <children>
+      <Label alignment="CENTER" layoutY="26.0" prefHeight="16.0" prefWidth="809.0" text="Financial Aid Recipient Information" textAlignment="CENTER" textFill="#37366f">
+         <font>
+            <Font name="Century Gothic Bold" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="74.0" fitWidth="79.0" layoutX="717.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/Abella-Logo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="cancelBtn" layoutX="665.0" layoutY="668.0" mnemonicParsing="false" onAction="#cancelBtnAction" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #37366f; -fx-border-color: transparent;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="Courier New" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <VBox layoutX="202.0" layoutY="72.0" prefHeight="96.0" prefWidth="510.0">
+         <children>
+            <HBox prefHeight="33.0" prefWidth="486.0">
+               <children>
+                  <Label prefHeight="24.0" prefWidth="97.0" text="Name:">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="FullName" prefHeight="24.0" prefWidth="470.0">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="33.0" prefWidth="486.0">
+               <children>
+                  <Label prefHeight="24.0" prefWidth="96.0" text="Course:">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Course" prefHeight="24.0" prefWidth="464.0">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="33.0" prefWidth="486.0">
+               <children>
+                  <Label prefHeight="24.0" prefWidth="72.0" text="School:">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="School" prefHeight="26.0" prefWidth="436.0">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="74.0" prefHeight="33.0" prefWidth="486.0">
+               <children>
+                  <Label prefHeight="24.0" prefWidth="72.0" text="Status:">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Status" prefHeight="26.0" prefWidth="436.0">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="43.0" layoutY="170.0" prefHeight="489.0" prefWidth="733.0">
+         <children>
+            <HBox prefHeight="7.0" prefWidth="723.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="26.0" prefWidth="833.0" text="Recipient's Personal Information">
+                     <font>
+                        <Font name="Cambria Italic" size="21.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox id="Address Part" prefHeight="30.0" prefWidth="723.0">
+               <children>
+                  <Label prefHeight="26.0" prefWidth="73.0" text="Address:" underline="true">
+                     <font>
+                        <Font name="Cambria Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="Address" prefHeight="29.0" prefWidth="463.0" style="-fx-background-color: transparent;">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextField>
+                  <Label prefHeight="26.0" prefWidth="47.0" text="Zone:" underline="true">
+                     <font>
+                        <Font name="Cambria Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Zone" prefHeight="26.0" prefWidth="33.0">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="26.0" prefWidth="35.0" text="Sex:" underline="true">
+                     <font>
+                        <Font name="Cambria Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Sex" prefHeight="26.0" prefWidth="56.0">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox id="BirthDay Part" layoutX="15.0" layoutY="20.0" prefHeight="30.0" prefWidth="723.0">
+               <children>
+                  <Label prefHeight="26.0" prefWidth="92.0" text="Birth Date:" underline="true">
+                     <font>
+                        <Font name="Cambria Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="DOB" prefHeight="26.0" prefWidth="98.0">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="26.0" prefWidth="41.0" text="Age:" underline="true">
+                     <font>
+                        <Font name="Cambria Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Age" prefHeight="26.0" prefWidth="43.0">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="26.0" prefWidth="109.0" text="Place Of Birth:" underline="true">
+                     <font>
+                        <Font name="Cambria Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="POB" prefHeight="29.0" prefWidth="87.0" style="-fx-background-color: transparent;">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextField>
+                  <Label prefHeight="26.0" prefWidth="92.0" text="Contact#:" underline="true">
+                     <font>
+                        <Font name="Cambria Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="ConNum" prefHeight="26.0" prefWidth="151.0">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox id="Zone Part" layoutX="15.0" layoutY="50.0" prefHeight="30.0" prefWidth="723.0">
+               <children>
+                  <Label prefHeight="26.0" prefWidth="148.0" text="Zone Organization:" underline="true">
+                     <font>
+                        <Font name="Cambria Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="ZoneOrg" prefHeight="29.0" prefWidth="122.0" style="-fx-background-color: transparent;">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextField>
+                  <Label prefHeight="26.0" prefWidth="114.0" text="Day Applied:" underline="true">
+                     <font>
+                        <Font name="Cambria Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="DayApp" prefHeight="26.0" prefWidth="96.0">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="26.0" prefWidth="114.0" text="College Level:" underline="true">
+                     <font>
+                        <Font name="Cambria Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="CollegeLvl" prefHeight="26.0" prefWidth="123.0">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="15.0" layoutY="30.0" prefHeight="24.0" prefWidth="723.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="26.0" prefWidth="833.0" text="Recipient's Parent Information">
+                     <font>
+                        <Font name="Cambria Italic" size="21.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox id="Mother Part 1" layoutX="15.0" layoutY="80.0" prefHeight="30.0" prefWidth="723.0">
+               <children>
+                  <Label prefHeight="26.0" prefWidth="122.0" text="Mother's Name:" underline="true">
+                     <font>
+                        <Font name="Cambria Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="MotherName" prefHeight="29.0" prefWidth="183.0" style="-fx-background-color: transparent;">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextField>
+                  <Label prefHeight="26.0" prefWidth="77.0" text="Contact#:" underline="true">
+                     <font>
+                        <Font name="Cambria Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="ConNumM" prefHeight="26.0" prefWidth="130.0">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="26.0" prefWidth="93.0" text="Occupation:" underline="true">
+                     <font>
+                        <Font name="Cambria Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="OccupationM" prefHeight="29.0" prefWidth="97.0" style="-fx-background-color: transparent;">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox id="Mother Part 1" layoutX="15.0" layoutY="120.0" prefHeight="30.0" prefWidth="723.0">
+               <children>
+                  <Label prefHeight="26.0" prefWidth="122.0" text="Father's Name:" underline="true">
+                     <font>
+                        <Font name="Cambria Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="FatherName" prefHeight="29.0" prefWidth="184.0" style="-fx-background-color: transparent;">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextField>
+                  <Label prefHeight="26.0" prefWidth="78.0" text="Contact#:" underline="true">
+                     <font>
+                        <Font name="Cambria Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="ConNumF" prefHeight="26.0" prefWidth="130.0">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="26.0" prefWidth="93.0" text="Occupation:" underline="true">
+                     <font>
+                        <Font name="Cambria Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="OccupationF" prefHeight="29.0" prefWidth="97.0" style="-fx-background-color: transparent;">
+                     <font>
+                        <Font name="Cambria" size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox prefHeight="266.0" prefWidth="723.0">
+               <children>
+                  <VBox prefHeight="197.0" prefWidth="791.0">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                     <children>
+                        <Label alignment="CENTER" prefHeight="26.0" prefWidth="833.0" text="Recipient's Income Status">
+                           <font>
+                              <Font name="Cambria Italic" size="21.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="30.0" prefWidth="371.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="218.0" text="Estimated Anual Income: " underline="true">
+                                 <font>
+                                    <Font name="Cambria Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="EstAnnIncome" alignment="CENTER" prefHeight="29.0" prefWidth="183.0" style="-fx-background-color: transparent;">
+                                 <font>
+                                    <Font name="Cambria" size="16.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="36.0" prefHeight="30.0" prefWidth="371.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="215.0" text="Average Monthly Income:" underline="true">
+                                 <font>
+                                    <Font name="Cambria Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="AvgMonInc" alignment="CENTER" prefHeight="29.0" prefWidth="183.0" style="-fx-background-color: transparent;">
+                                 <font>
+                                    <Font name="Cambria" size="16.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="66.0" prefHeight="30.0" prefWidth="371.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="215.0" text="Enrollment Fee Paid:" underline="true">
+                                 <font>
+                                    <Font name="Cambria Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="EnrollPaid" alignment="CENTER" prefHeight="29.0" prefWidth="183.0" style="-fx-background-color: transparent;">
+                                 <font>
+                                    <Font name="Cambria" size="16.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="66.0" prefHeight="30.0" prefWidth="371.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="215.0" text="Sem Estimate" underline="true">
+                                 <font>
+                                    <Font name="Cambria Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="SemEsti" alignment="CENTER" prefHeight="29.0" prefWidth="183.0" style="-fx-background-color: transparent;">
+                                 <font>
+                                    <Font name="Cambria" size="16.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </TextField>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="5.0" right="5.0" top="20.0" />
+         </padding>
+      </VBox>
+      <Button fx:id="matriculationBtn" layoutX="524.0" layoutY="668.0" mnemonicParsing="false" onAction="#matriculationBtnAction" prefHeight="25.0" prefWidth="133.0" style="-fx-background-color: #37366f; -fx-border-color: transparent;" text="Matriculation" textFill="WHITE">
+         <font>
+            <Font name="Courier New" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="GradesBtn" layoutX="405.0" layoutY="668.0" mnemonicParsing="false" onAction="#GradesBtnAction" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #37366f; -fx-border-color: transparent;" text="Grades" textFill="WHITE">
+         <font>
+            <Font name="Courier New" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Circle fx:id="RecieverImg" fill="DODGERBLUE" layoutX="111.0" layoutY="120.0" radius="65.0" stroke="#a89b9b" strokeType="INSIDE" />
+   </children>
+</AnchorPane>

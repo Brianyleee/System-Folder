@@ -466,4 +466,25 @@ public class Functions {
             rs.close();
         }
     }
+    
+    public int countFinancialAidFiled() throws SQLException{
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT Recipient_Id FROM Financial_Aid";
+        int index = 0;
+        try {
+            ps = Connect.prepareStatement(query);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                index++;
+            }
+            return index;
+        } catch (Exception e) {
+            index = 0;
+            return index;
+        } finally {
+            ps.close();
+            rs.close();
+        }
+    }
 }
