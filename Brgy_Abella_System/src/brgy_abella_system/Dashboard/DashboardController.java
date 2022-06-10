@@ -39,7 +39,6 @@ public class DashboardController implements Initializable {
     private Button employeeBtn;
     @FXML
     private Button blotterBtn;
-    @FXML
     private Button inquiriesBtn;
     @FXML
     private Button LogoutBtn;
@@ -47,6 +46,10 @@ public class DashboardController implements Initializable {
     private Label Emp_Counter;
     @FXML
     private Label Blotter_Counter;
+    @FXML
+    private Button financialAidBtn;
+    @FXML
+    private Label Financial_Counter;
 
     /**
      * Initializes the controller class.
@@ -56,6 +59,7 @@ public class DashboardController implements Initializable {
         try {
             Employeecounter();
             BlotterCounter();
+            FinancialAidCounter();
         } catch (SQLException ex) {
             System.exit(0);
         }
@@ -82,8 +86,8 @@ public class DashboardController implements Initializable {
         action.ChangeScene("Blotter/Blotter.fxml", blotterBtn);
     }
     @FXML
-    private void inquiriesBtnAction (ActionEvent event) throws IOException{
-        action.ChangeScene("Inquiries/Inquiries.fxml", inquiriesBtn);
+    private void financialAidBtnAction(ActionEvent event) throws IOException {
+        action.ChangeScene("FinancialAid/FinancialAid.fxml", financialAidBtn);
     }
     
     private void Employeecounter() throws SQLException{
@@ -95,4 +99,10 @@ public class DashboardController implements Initializable {
         int count = DashboardModel.countBlottersFiled();
         Blotter_Counter.setText(Integer.toString(count));
     }
+
+    private void FinancialAidCounter() throws SQLException{
+        int count = DashboardModel.countFinancialAidFiled();
+        Financial_Counter.setText(Integer.toString(count));
+    }
+    
 }

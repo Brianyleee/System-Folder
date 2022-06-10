@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="587.0" prefWidth="1075.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="brgy_abella_system.FinancialAid.MatriculationImageController">
+   <children>
+      <ScrollPane hbarPolicy="NEVER" layoutY="87.0" pannable="true" prefHeight="500.0" prefWidth="1075.0" vbarPolicy="ALWAYS">
+         <content>
+            <ImageView fx:id="ImageView" fitHeight="814.0" fitWidth="1060.0" pickOnBounds="true" preserveRatio="true" />
+         </content>
+         <cursor>
+            <Cursor fx:constant="MOVE" />
+         </cursor>
+      </ScrollPane>
+      <Label fx:id="Name" layoutX="88.0" layoutY="32.0" prefHeight="25.0" prefWidth="921.0" text="Label" textFill="#37366f">
+         <font>
+            <Font name="Century Gothic Bold" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="61.0" fitWidth="65.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/Abella-Logo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="ExitBtn" layoutX="1018.0" layoutY="24.0" mnemonicParsing="false" onAction="#ExitBtnAction" prefHeight="25.0" prefWidth="28.0" style="-fx-border-color: transparent; -fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/Close.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

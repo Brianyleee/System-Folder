@@ -47,7 +47,7 @@ public class BlotterController implements Initializable {
     @FXML
     private Button blotterBtn;
     @FXML
-    private Button inquiriesBtn;
+    private Button financialAidBtn;
     @FXML
     private Button LogoutBtn;
     @FXML
@@ -70,6 +70,7 @@ public class BlotterController implements Initializable {
     private Button editBtn;
     @FXML
     private Button viewBtn;
+    
 
     public BlotterController() {
         Connect = Connector.Connect();
@@ -108,8 +109,8 @@ public class BlotterController implements Initializable {
     }
 
     @FXML
-    private void inquiriesBtnAction(ActionEvent event) throws IOException {
-        action.ChangeScene("Inquiries/Inquiries.fxml", inquiriesBtn);
+    private void financialAidBtnAction(ActionEvent event) throws IOException {
+        action.ChangeScene("FinancialAid/FinancialAid.fxml", financialAidBtn);
     }
     
     @FXML
@@ -185,7 +186,7 @@ public class BlotterController implements Initializable {
         ps.setString(6, "%" + Search + "%");
         ps.setString(7, "%" + Search + "%");
         ps.setString(8, "%" + Search + "%");
-        ResultSet rs = ps. executeQuery();
+        ResultSet rs = ps.executeQuery();
         
         try {
             while (rs.next()) {
@@ -357,5 +358,7 @@ public class BlotterController implements Initializable {
             rs.close();
         }
     }
+
+    
     
 }

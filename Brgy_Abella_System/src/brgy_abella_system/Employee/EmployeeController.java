@@ -39,7 +39,6 @@ public class EmployeeController implements Initializable {
     ObservableList<Employee> EmployeeList = FXCollections.observableArrayList();
     Functions EmployeeModel = new Functions();
     Repeatables action = new Repeatables();
-
     Connection Connect;
     @FXML
     private Button addEmployeeBtn;
@@ -54,7 +53,7 @@ public class EmployeeController implements Initializable {
     @FXML
     private Button blotterBtn;
     @FXML
-    private Button inquiriesBtn;
+    private Button financialAidBtn;
     @FXML
     private TableColumn<Employee, String> emp_id;
     @FXML
@@ -75,6 +74,7 @@ public class EmployeeController implements Initializable {
     private Button editBtn;
     @FXML
     private Button viewBtn;
+    
 
     public EmployeeController() {
         Connect = Connector.Connect();
@@ -118,8 +118,8 @@ public class EmployeeController implements Initializable {
     }
 
     @FXML
-    private void inquiriesBtnAction(ActionEvent event) throws IOException {
-        action.ChangeScene("Inquiries/Inquiries.fxml", inquiriesBtn);
+    private void financialAidBtnAction(ActionEvent event) throws IOException {
+        action.ChangeScene("FinancialAid/FinancialAid.fxml", financialAidBtn);
     }
 
     @FXML
@@ -183,7 +183,7 @@ public class EmployeeController implements Initializable {
 
         try {
             while (rs.next()) {
-                String id, fullname, position, fname, mname, lname;
+                String id, position, fname, mname, lname;
                 id = rs.getString("Employee_Id");
                 fname = rs.getString("First_Name");
                 mname = rs.getString("Middle_Name");
@@ -207,9 +207,7 @@ public class EmployeeController implements Initializable {
         }
     }
 
-//    On process
     public String Id;
-
     @FXML
     public void GetDataOnClick(MouseEvent event) throws IOException, SQLException {
         Employee person = employeeTable.getSelectionModel().getSelectedItem();
@@ -308,5 +306,7 @@ public class EmployeeController implements Initializable {
             rs.close();
         }
     }
+
+    
 
 }
