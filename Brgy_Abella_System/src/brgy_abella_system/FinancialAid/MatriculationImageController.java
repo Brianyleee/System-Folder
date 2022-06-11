@@ -6,6 +6,7 @@
 package brgy_abella_system.FinancialAid;
 
 import brgy_abella_system.Repeatables;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -40,7 +41,7 @@ public class MatriculationImageController implements Initializable {
     }    
     
     public void MatriculationView(String File, String Name) {
-        Image Profile = new Image(getClass().getResourceAsStream(File));
+        Image Profile = new Image(new File(File).toURI().toString());
         ImageView.setImage(Profile);
         this.Name.setText(Name.toUpperCase() + " Matriculation");
     }

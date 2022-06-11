@@ -101,10 +101,6 @@ public class ViewRecipientsController implements Initializable {
         action.Exit(cancelBtn);
     }
 
-    public void setVariables(String ImageName,String Name) {
-        
-    }
-
     public void display(String fullname, String CourseR, String SchoolAttend, String RStatus, String RAddress, int RZone, String Sex,
             String DOB, String POB, String Contact_Number, String Zone_Org, String DayApplied, String College_Level, String MotherName,
             String ConNum_M, String OccupationM, String FatherName, String ConNum_F, String OccupationF, String EstAnnInc, String AvgMonInc,
@@ -134,7 +130,8 @@ public class ViewRecipientsController implements Initializable {
             this.EnrollPaid.setText(EnrollPaid);
             this.SemEsti.setText(SemEsti);
             this.Age.setText(String.valueOf(Age));
-            Image ProfileView = new Image(getClass().getResourceAsStream(Profile));
+            
+            Image ProfileView = new Image(new File(Profile).toURI().toString());
             RecieverImg.setFill(new ImagePattern(ProfileView));
             
             this.Grades = Grades;
