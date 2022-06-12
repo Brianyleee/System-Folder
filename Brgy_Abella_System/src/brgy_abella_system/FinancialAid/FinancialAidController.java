@@ -164,7 +164,7 @@ public class FinancialAidController implements Initializable {
 
         try {
             while (rs.next()) {
-                String id, fullname, DayApplied, fname, mname, lname,DOB,CollegeLevel;
+                String id, fullname, DayApplied, fname, mname, lname, DOB, CollegeLevel;
                 id = rs.getString("Recipient_Id");
                 fname = rs.getString("First_Name_R");
                 mname = rs.getString("Middle_Name_R");
@@ -172,9 +172,9 @@ public class FinancialAidController implements Initializable {
                 DayApplied = rs.getString("Day_Applied");
                 DOB = rs.getString("DOB");
                 CollegeLevel = rs.getString("College_Level");
-                fullname = lname+", "+fname+" "+mname.charAt(0)+".";
+                fullname = lname + ", " + fname + " " + mname.charAt(0) + ".";
 //                String Recipient_Id,String FullNameReci,String DayApplied,String DOB,String CollegeLevel
-                Recipients.add(new Recipients(id,fullname,DayApplied,DOB,CollegeLevel));
+                Recipients.add(new Recipients(id, fullname, DayApplied, DOB, CollegeLevel));
                 FinancialAidRecieverTable.setItems(Recipients);
             }
             Applicant_id.setCellValueFactory(new PropertyValueFactory<>("Recipient_Id"));
@@ -267,7 +267,16 @@ public class FinancialAidController implements Initializable {
     }
 
     @FXML
-    private void editBtnAction(ActionEvent event) {
+    private void editBtnAction(ActionEvent event) throws IOException, SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("EditRecipient.fxml"));
+        Parent root = loader.load();
+        EditRecipientController EditRecipientController = loader.getController();
+        EditRecipientController.Display(Recipient_Id);
+        Stage stage = new Stage();
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(new Scene(root));
+        action.Draggable(stage, root);
+        stage.show();
     }
 
     public void loadData() throws SQLException {

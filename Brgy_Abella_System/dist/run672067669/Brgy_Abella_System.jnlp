@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Brgy_Abella_System.jnlp">
+  <information>
+    <title>Brgy_Abella_System</title>
+    <vendor>xande</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="Brgy_Abella_System.jar" size="7547210" download="eager" />
+    <jar href="lib\sqlite-jdbc-3.20.1.jar" size="6637455" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Brgy_Abella_System" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="brgy_abella_system.MainSystem"  name="Brgy_Abella_System" />
+  <update check="always"/>
+</jnlp>
