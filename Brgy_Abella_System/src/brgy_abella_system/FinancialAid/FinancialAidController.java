@@ -198,7 +198,13 @@ public class FinancialAidController implements Initializable {
     }
 
     @FXML
-    private void AddBtnAction(ActionEvent event) {
+    private void AddBtnAction(ActionEvent event) throws IOException {
+        Stage window = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("AddRecipient.fxml"));
+        window.setScene(new Scene(root));
+        window.initStyle(StageStyle.UNDECORATED);
+        action.Draggable(window, root);
+        window.show();
     }
 
     @FXML
