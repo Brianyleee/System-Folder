@@ -173,7 +173,6 @@ public class FinancialAidController implements Initializable {
                 DOB = rs.getString("DOB");
                 CollegeLevel = rs.getString("College_Level");
                 fullname = lname + ", " + fname + " " + mname.charAt(0) + ".";
-//                String Recipient_Id,String FullNameReci,String DayApplied,String DOB,String CollegeLevel
                 Recipients.add(new Recipients(id, fullname, DayApplied, DOB, CollegeLevel));
                 FinancialAidRecieverTable.setItems(Recipients);
             }
@@ -183,7 +182,6 @@ public class FinancialAidController implements Initializable {
             birthDay.setCellValueFactory(new PropertyValueFactory<>("DOB"));
             collegeLevel.setCellValueFactory(new PropertyValueFactory<>("CollegeLevel"));
         } catch (Exception e) {
-            System.out.println(e);
             ps.close();
             rs.close();
         } finally {
@@ -231,8 +229,22 @@ public class FinancialAidController implements Initializable {
                 String Zone_Org = rs.getString("Zone_Organization");
                 String DayApplied = rs.getString("Day_Applied");
                 String College_Level = rs.getString("College_Level");
-                String MotherName = rs.getString("Last_Name_F") + ", " + rs.getString("First_Name_F") + " " + rs.getString("Middle_Name_F").charAt(0) + ".";
-                String FatherName = rs.getString("Last_Name_F") + ", " + rs.getString("First_Name_F") + " " + rs.getString("Middle_Name_F").charAt(0) + ".";
+                String MotherName = null;
+                if(rs.getString("Last_Name_M") != null && rs.getString("First_Name_M")!=null){
+                    if(rs.getString("Middle_Name_M")!= null){
+                        MotherName = rs.getString("Last_Name_M") + ", " + rs.getString("First_Name_M");
+                    }else{
+                        MotherName = rs.getString("Last_Name_M") + ", " + rs.getString("First_Name_M") + " " + rs.getString("Middle_Name_M").charAt(0) + ".";
+                    }                   
+                }
+                String FatherName = null;
+                if(rs.getString("Last_Name_F") != null && rs.getString("First_Name_F")!=null ){
+                    if(rs.getString("Middle_Name_F")!= null){
+                        FatherName = rs.getString("Last_Name_F") + ", " + rs.getString("First_Name_F");
+                    }else{
+                        FatherName = rs.getString("Last_Name_F") + ", " + rs.getString("First_Name_F") + " " + rs.getString("Middle_Name_F").charAt(0) + ".";
+                    }
+                }
                 String ConNum_M = rs.getString("Contact_Number_M");
                 String ConNum_F = rs.getString("Contact_Number_F");;
                 String OccupationM = rs.getString("Occupation_M");
@@ -251,7 +263,7 @@ public class FinancialAidController implements Initializable {
 
                 ViewRecipientsController.display(fullname, CourseR, SchoolAttend, RStatus, RAddress, RZone, Sex,
                         DOB, POB, Contact_Number, Zone_Org, DayApplied, College_Level, MotherName,
-                        ConNum_M, OccupationM, FatherName, ConNum_F, OccupationM, EstAnnInc, AvgMonInc,
+                        ConNum_M, OccupationM, FatherName, ConNum_F, OccupationF, EstAnnInc, AvgMonInc,
                         EnrollPaid, SemEsti, Age, Filename, Grades, Matri);
 
                 Stage stage = new Stage();
@@ -264,6 +276,7 @@ public class FinancialAidController implements Initializable {
                 rs.close();
             }
         } catch (Exception e) {
+            e.printStackTrace();
             ps.close();
             rs.close();
         } finally {

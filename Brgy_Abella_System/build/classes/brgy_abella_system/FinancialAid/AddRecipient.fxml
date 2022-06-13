@@ -157,7 +157,7 @@
                         <Font name="Candara Light" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="age" prefHeight="25.0" prefWidth="49.0" />
+                  <TextField fx:id="age" prefHeight="25.0" prefWidth="49.0" style="-fx-font-family: Candara; -fx-font-size: 13;" />
                   <Label text="Place of Birth:" textFill="#373462">
                      <font>
                         <Font name="Candara Light" size="18.0" />
@@ -251,7 +251,7 @@
                         <Font name="Candara Light" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="lnameM" prefHeight="25.0" prefWidth="252.0" style="-fx-font-family: Candara Light; -fx-font-size: 15;" />
+                  <TextField fx:id="lnameM" prefHeight="25.0" prefWidth="252.0" style="-fx-font-family: Candara Light; -fx-font-size: 13;" />
                   <Label text="Father's Last Name:" textFill="#373462">
                      <font>
                         <Font name="Candara Light" size="18.0" />
