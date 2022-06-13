@@ -487,4 +487,27 @@ public class Functions {
             rs.close();
         }
     }
+    
+//    Registration Validating if the Recipient ID is already taken.
+    public boolean isRecipientIDExisting(String Id) throws SQLException {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT * FROM Financial_Aid WHERE Recipient_Id=?";
+        try {
+            ps = Connect.prepareStatement(query);
+            ps.setString(1, Id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        } finally {
+            ps.close();
+            rs.close();
+        }
+    }
 }
