@@ -1,38 +1,21 @@
 package brgy_abella_system.FinancialAid;
 
-/**
- *
- * @author smile
- */
 
-import brgy_abella_system.Functions;
 import brgy_abella_system.Connector;
 import brgy_abella_system.Repeatables;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import java.sql.*;
+import java.util.*;
+import javafx.collections.*;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.TransferMode;
+import javafx.scene.control.*;
+import javafx.scene.image.*;
+import javafx.scene.input.*;
 import javax.imageio.ImageIO;
 
 public class AddRecipientController implements Initializable {
@@ -43,9 +26,7 @@ public class AddRecipientController implements Initializable {
     ObservableList<String> Level = FXCollections.observableArrayList("1st Year", "2nd Year", "3rd Year", "4th Year");
     ObservableList<String> Income = FXCollections.observableArrayList("Below 5,000", "5,000-10,000", "10,000-15,000", "Above 15,000");
     
-    Repeatables action = new Repeatables();
-    Functions AddRecipientModel = new Functions();
-    
+    Repeatables action = new Repeatables();    
     Connection Connect;
     public AddRecipientController() { 
         Connect = Connector.Connect();
@@ -214,7 +195,7 @@ public class AddRecipientController implements Initializable {
 
         if (!first_Name.isEmpty() && College_Level != null && !last_Name.isEmpty() && !CourseR.isEmpty() && !SchoolAttend.isEmpty() && Day_Applied != null && Age != 0
             && !recipient_ID.isEmpty() && EstAnnInc != null && !middle_Name.isEmpty() && RStatus != null && !RAddress.isEmpty() && RSex != null && DateOB != null && !PlaceOB.isEmpty()) {
-            if (!AddRecipientModel.isRecipientIDExisting(recipient_ID)) {
+            if (!isRecipientIDExisting(recipient_ID)) {
                 profile_Picture = SaveProfile();
                 previous_Grades = SaveGrades();
                 matriculation = SaveMatri();
@@ -372,6 +353,29 @@ public class AddRecipientController implements Initializable {
     private void handledragOverGrades(DragEvent event) {
         if (event.getDragboard().hasFiles()) {
             event.acceptTransferModes(TransferMode.ANY);
+        }
+    }
+    
+    //    Registration Validating if the Recipient ID is already taken.
+    public boolean isRecipientIDExisting(String Id) throws SQLException {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT * FROM Financial_Aid WHERE Recipient_Id=?";
+        try {
+            ps = Connect.prepareStatement(query);
+            ps.setString(1, Id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        } finally {
+            ps.close();
+            rs.close();
         }
     }
 }

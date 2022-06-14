@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package brgy_abella_system.Employee;
 
-import brgy_abella_system.Functions;
+import brgy_abella_system.Connector;
 import brgy_abella_system.Repeatables;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -24,17 +19,22 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-/**
- * FXML Controller class
- *
- * @author xande
- */
+
 public class EditEmployeeController implements Initializable {
+    
+    Connection Connect;
+
+    public EditEmployeeController() {
+        Connect = Connector.Connect();
+        if (Connect == null) {
+            System.exit(0);
+        }
+    }
 
     Repeatables action = new Repeatables();
-    Functions EditModel = new Functions();
     ObservableList<String> StatusList = FXCollections.observableArrayList("Active", "Inactive");
     ObservableList<Integer> Access = FXCollections.observableArrayList(0, 1);
+    
     @FXML
     private TextField Emp_id;
     @FXML
@@ -84,7 +84,7 @@ public class EditEmployeeController implements Initializable {
         int Access = Emp_Access.getValue();
         String Status = Emp_Status.getValue().toUpperCase();
         if (!fname.isEmpty() && !lname.isEmpty() && !id.isEmpty() && DOB != null && !Designation.isEmpty() && Hired != null) {
-                if (EditModel.UpdateEmployeeInfo(id, Access, Designation, fname, mname, lname, DOB, Hired, Resign, Status)) {
+                if (UpdateEmployeeInfo(id, Access, Designation, fname, mname, lname, DOB, Hired, Resign, Status)) {
                     Alert.setText("Employee Added");
                     action.Exit(saveBtn);
                 } else {
@@ -113,6 +113,47 @@ public class EditEmployeeController implements Initializable {
         Emp_Date_Hired.setValue(LocalDate.parse(emp_hired));
         if (emp_resigned != null) {
             Emp_Date_Resigned.setValue(LocalDate.parse(emp_resigned));
+        }
+    }
+    
+     public boolean UpdateEmployeeInfo(String Id, int Access,String Designation,String fname,String mname,String lname,LocalDate DOB,LocalDate Hired,LocalDate Resign,String Status) throws SQLException{
+        PreparedStatement ps = null;
+        System.out.println(DOB +"\n" + Hired +"\n" + Resign );
+        String query = "UPDATE Employee SET "
+                + "First_Name=?,"
+                + "Middle_Name=?,"
+                + "Last_Name=?,"
+                + "Designation=?,"
+                + "Status=?,"
+                + "DOB=?,"
+                + "Access=?,"
+                + "Date_Hired=?,"
+                + "Date_Resigned=?"
+                + " WHERE Employee_Id=?";
+        try {
+            ps = Connect.prepareStatement(query);
+            ps.setString(1, fname);
+            ps.setString(2, mname);
+            ps.setString(3, lname);
+            ps.setString(4, Designation);
+            ps.setString(5, Status);
+            ps.setString(6, DOB.toString());
+            ps.setInt(7, Access);
+            ps.setString(8, Hired.toString());
+            if(Resign == null){
+                String resigndate = null;
+                ps.setString(9, resigndate);
+            }else{
+                ps.setString(9, Resign.toString());
+            }
+            ps.setString(10, Id);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        } finally {
+            ps.close();
         }
     }
 

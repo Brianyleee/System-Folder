@@ -1,9 +1,11 @@
 package brgy_abella_system.Blotter;
 
-import brgy_abella_system.Functions;
+import brgy_abella_system.Connector;
 import brgy_abella_system.Repeatables;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -17,9 +19,17 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class EditBlotterController implements Initializable {
-
+    
     Repeatables action = new Repeatables();
-    Functions EditBlotterModel = new Functions();
+    
+    Connection Connect;
+
+    public EditBlotterController() {
+        Connect = Connector.Connect();
+        if (Connect == null) {
+            System.exit(0);
+        }
+    }
    
     @FXML
     private TextField Blotter_Complainant_ID_C;
@@ -108,7 +118,7 @@ public class EditBlotterController implements Initializable {
         if (!case_Number.isEmpty() && !complaint.isEmpty() && !solution.isEmpty() && !employee_ID.isEmpty() && complaint_Date != null
             && !complainant_ID_C.isEmpty() && !first_Name_C.isEmpty() && !middle_Name_C.isEmpty() && !last_Name_C.isEmpty() && !contact_Number_C.isEmpty() && !street_C.isEmpty() && !barangay_C.isEmpty() && !city_C.isEmpty() && !province_C.isEmpty()
             && !first_Name_D.isEmpty() && !middle_Name_D.isEmpty() && !last_Name_D.isEmpty() && !contact_Number_D.isEmpty() && !street_D.isEmpty() && !barangay_D.isEmpty() && !city_D.isEmpty() && !province_D.isEmpty()) {
-            if (EditBlotterModel.UpdateBlotterFile(case_Number, employee_ID, complaint_Date, complaint, solution, 
+            if (UpdateBlotterFile(case_Number, employee_ID, complaint_Date, complaint, solution, 
                             complainant_ID_C, first_Name_C, middle_Name_C, last_Name_C, contact_Number_C, street_C, barangay_C, city_C, province_C,
                             first_Name_D, middle_Name_D, last_Name_D, contact_Number_D, street_D, barangay_D, city_D, province_D)) {
                             Alert.setText("Successfully Edited the Blotter");
@@ -153,6 +163,65 @@ public class EditBlotterController implements Initializable {
     @FXML
     private void ExitButtonAction(ActionEvent event) {
         action.Exit(cancelBtn);
+    }
+    
+    //    Update Blotter File in the Database Table BLOTTER    
+    public boolean UpdateBlotterFile(String case_Number, String employee_ID, LocalDate complaint_Date, String complaint, String solution,
+                               String complainant_ID_C, String first_Name_C, String middle_Name_C, String last_Name_C, String contact_Number_C, String street_C, String barangay_C, String city_C, String province_C,
+                               String first_Name_D, String middle_Name_D, String last_Name_D, String contact_Number_D, String street_D, String barangay_D, String city_D, String province_D) throws SQLException{
+        PreparedStatement ps = null;
+        String query = "UPDATE Blotter SET "
+                + "Complaint_Date=?,"
+                + "Complaint=?,"
+                + "Solution=?,"
+                + "First_Name_C=?,"
+                + "Middle_Name_C=?,"
+                + "Last_Name_C=?,"
+                + "Contact_No_C=?,"
+                + "Street_C=?,"
+                + "Barangay_C=?,"
+                + "City_C=?,"
+                + "Province_C=?,"
+                + "First_Name_D=?,"
+                + "Middle_Name_D=?,"
+                + "Last_Name_D=?,"
+                + "Contact_No_D=?,"
+                + "Street_D=?,"
+                + "Barangay_D=?,"
+                + "City_D=?,"
+                + "Province_D=?"
+                + " WHERE Case_No=? AND Employee_Id=? AND Complainant_Id=?";
+        try {
+            ps = Connect.prepareStatement(query);
+            ps.setString(1, complaint_Date.toString());
+            ps.setString(2, complaint);
+            ps.setString(3, solution);
+            ps.setString(4, first_Name_C);
+            ps.setString(5, middle_Name_C);
+            ps.setString(6, last_Name_C);
+            ps.setString(7, contact_Number_C);
+            ps.setString(8, street_C);
+            ps.setString(9, barangay_C);
+            ps.setString(10, city_C);
+            ps.setString(11, province_C);
+            ps.setString(12, first_Name_D);
+            ps.setString(13, middle_Name_D);
+            ps.setString(14, last_Name_D);
+            ps.setString(15, contact_Number_D);
+            ps.setString(16, street_D);
+            ps.setString(17, barangay_D);
+            ps.setString(18, city_D);
+            ps.setString(19, province_D);
+            ps.setString(20, case_Number);
+            ps.setString(21, employee_ID);
+            ps.setString(22, complainant_ID_C);
+            ps.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            return false;
+        } finally {
+            ps.close();
+        }
     }
     
 }

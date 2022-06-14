@@ -5,38 +5,21 @@
  */
 package brgy_abella_system.FinancialAid;
 
-import brgy_abella_system.Blotter.ViewBlotterController;
 import brgy_abella_system.Connector;
-import brgy_abella_system.Employee.Employee;
 import brgy_abella_system.Repeatables;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import java.util.logging.*;
+import javafx.collections.*;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.fxml.*;
+import javafx.scene.*;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import javafx.scene.input.*;
+import javafx.stage.*;
 
 /**
  * FXML Controller class
@@ -230,18 +213,18 @@ public class FinancialAidController implements Initializable {
                 String DayApplied = rs.getString("Day_Applied");
                 String College_Level = rs.getString("College_Level");
                 String MotherName = null;
-                if(rs.getString("Last_Name_M") != null && rs.getString("First_Name_M")!=null){
-                    if(rs.getString("Middle_Name_M")!= null){
+                if (rs.getString("Last_Name_M") != null && rs.getString("First_Name_M") != null) {
+                    if (rs.getString("Middle_Name_M") != null) {
                         MotherName = rs.getString("Last_Name_M") + ", " + rs.getString("First_Name_M");
-                    }else{
+                    } else {
                         MotherName = rs.getString("Last_Name_M") + ", " + rs.getString("First_Name_M") + " " + rs.getString("Middle_Name_M").charAt(0) + ".";
-                    }                   
+                    }
                 }
                 String FatherName = null;
-                if(rs.getString("Last_Name_F") != null && rs.getString("First_Name_F")!=null ){
-                    if(rs.getString("Middle_Name_F")!= null){
+                if (rs.getString("Last_Name_F") != null && rs.getString("First_Name_F") != null) {
+                    if (rs.getString("Middle_Name_F") != null) {
                         FatherName = rs.getString("Last_Name_F") + ", " + rs.getString("First_Name_F");
-                    }else{
+                    } else {
                         FatherName = rs.getString("Last_Name_F") + ", " + rs.getString("First_Name_F") + " " + rs.getString("Middle_Name_F").charAt(0) + ".";
                     }
                 }
@@ -287,15 +270,33 @@ public class FinancialAidController implements Initializable {
 
     @FXML
     private void editBtnAction(ActionEvent event) throws IOException, SQLException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("EditRecipient.fxml"));
-        Parent root = loader.load();
-        EditRecipientController EditRecipientController = loader.getController();
-        EditRecipientController.Display(Recipient_Id);
-        Stage stage = new Stage();
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.setScene(new Scene(root));
-        action.Draggable(stage, root);
-        stage.show();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT * FROM Financial_Aid WHERE Recipient_Id = ?";
+        try {
+            ps = Connect.prepareStatement(query);
+            ps.setString(1, Recipient_Id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("EditRecipient.fxml"));
+                Parent root = loader.load();
+                EditRecipientController EditRecipientController = loader.getController();
+                EditRecipientController.Display(Recipient_Id);
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setScene(new Scene(root));
+                action.Draggable(stage, root);
+                stage.show();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            ps.close();
+            rs.close();
+        }finally{
+            ps.close();
+            rs.close();
+        }
+
     }
 
     public void loadData() throws SQLException {

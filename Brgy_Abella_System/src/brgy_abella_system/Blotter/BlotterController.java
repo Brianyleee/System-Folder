@@ -1,7 +1,6 @@
 package brgy_abella_system.Blotter;
 
 import brgy_abella_system.Connector;
-import brgy_abella_system.Functions;
 import brgy_abella_system.Repeatables;
 
 import java.io.IOException;
@@ -34,7 +33,6 @@ import javafx.stage.StageStyle;
 public class BlotterController implements Initializable {
     
     ObservableList<Blotter> BlotterList = FXCollections.observableArrayList();
-    Functions BlotterModel = new Functions();
     Repeatables action = new Repeatables();
     Connection Connect;
     
