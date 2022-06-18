@@ -101,14 +101,15 @@ public class AddEmployeeController implements Initializable {
         }else{
             Status = Emp_Status.getValue().toUpperCase();
         }
-        int Access;
-        if (Emp_Access.getValue() == null) {
-            Access = 3;
-        } else {
+        
+        int Access = 3;
+        if (Emp_Access.getValue() != null) {
             Access = Emp_Access.getValue();
         }
-
-        if (!fname.isEmpty() || !lname.isEmpty() || !id.isEmpty() || DOB != null || !Designation.isEmpty() || Hired != null || !Status.isEmpty() || Access != 3) {
+        
+        
+        if (!fname.isEmpty() && !lname.isEmpty() && !id.isEmpty() && DOB != null && !Designation.isEmpty() && Hired != null && !Status.isEmpty() && Access != 3) {
+            System.out.println( Access != 3);
             if (!isEmpIdEsxisting(id)) {
                 if (InsertEmployee(id, fname, mname, lname, Designation, DOB, Hired, Resign, Status, Access)) {
                     Alert.setText("Employee Added");

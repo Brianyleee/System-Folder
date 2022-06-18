@@ -119,7 +119,7 @@ public class AddBlotterController implements Initializable {
         if (!case_Number.isEmpty() && !complaint.isEmpty() && !solution.isEmpty() && !employee_ID.isEmpty() && complaint_Date != null
             && !complainant_ID_C.isEmpty() && !first_Name_C.isEmpty() && !middle_Name_C.isEmpty() && !last_Name_C.isEmpty() && !contact_Number_C.isEmpty() && !street_C.isEmpty() && !barangay_C.isEmpty() && !city_C.isEmpty() && !province_C.isEmpty()
             && !first_Name_D.isEmpty() && !middle_Name_D.isEmpty() && !last_Name_D.isEmpty() && !contact_Number_D.isEmpty() && !street_D.isEmpty() && !barangay_D.isEmpty() && !city_D.isEmpty() && !province_D.isEmpty()) {
-            if (isCaseNoExisting(case_Number)) {
+            if (!isCaseNoExisting(case_Number)) {
                 if (!isComplainantIDExisting(complainant_ID_C)) {
                     if (FileBlotter(case_Number, employee_ID, complaint_Date, complaint, solution, 
                             complainant_ID_C, first_Name_C, middle_Name_C, last_Name_C, contact_Number_C, street_C, barangay_C, city_C, province_C,
