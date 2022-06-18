@@ -61,12 +61,12 @@
                </font>
             </Label>
             <TextField fx:id="Blotter_Barangay_C" promptText="Barangay *" style="-fx-border-color: #373462;" />
-            <Label text="City *">
+            <Label text="City / Town *">
                <font>
                   <Font name="Candara" size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="Blotter_City_C" promptText="City *" style="-fx-border-color: #373462;" />
+            <TextField fx:id="Blotter_City_C" promptText="City / Town *" style="-fx-border-color: #373462;" />
             <Label text="Province *">
                <font>
                   <Font name="Candara" size="12.0" />

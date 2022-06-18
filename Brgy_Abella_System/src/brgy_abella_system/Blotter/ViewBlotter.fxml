@@ -255,7 +255,7 @@
                   <Font name="Courier New" size="12.0" />
                </font>
             </Label>
-            <Label text="City" textFill="#37366f">
+            <Label text="City / Town" textFill="#37366f">
                <font>
                   <Font name="Courier New" size="12.0" />
                </font>
