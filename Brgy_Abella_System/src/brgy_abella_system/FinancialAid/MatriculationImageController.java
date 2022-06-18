@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package brgy_abella_system.FinancialAid;
 
 import brgy_abella_system.Repeatables;
@@ -10,12 +6,9 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.fxml.*;
+import javafx.scene.control.*;
+import javafx.scene.image.*;
 
 /**
  * FXML Controller class

@@ -1,16 +1,9 @@
 package brgy_abella_system.Employee;
 
-import brgy_abella_system.Connector;
 import brgy_abella_system.Repeatables;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

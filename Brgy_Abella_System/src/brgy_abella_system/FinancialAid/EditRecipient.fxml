@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="1008.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="brgy_abella_system.FinancialAid.EditRecipientController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="1008.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="brgy_abella_system.FinancialAid.EditRecipientController">
    <children>
       <Pane layoutX="-58.0" layoutY="-128.0" prefHeight="284.0" prefWidth="145.0" style="-fx-rotate: 50px; -fx-background-color: #373462;" />
       <Label layoutX="461.0" layoutY="43.0" text="Brgy. Abella Financial Aid Edit Information" textFill="#373462">
@@ -35,7 +35,7 @@
       </Label>
       <ImageView fx:id="grades" fitHeight="92.0" fitWidth="107.0" layoutX="45.0" layoutY="142.0" onDragDropped="#handleDropGrades" onDragOver="#handledragOverGrades" pickOnBounds="true">
          <image>
-            <Image url="@Profile/Espinas,Alexander.png" />
+            <Image url="@../../img/Abella-Logo.png" />
          </image>
       </ImageView>
       <Label layoutX="71.0" layoutY="239.0" text="Grades" textFill="#373462">
@@ -45,7 +45,7 @@
       </Label>
       <ImageView fx:id="matri" fitHeight="92.0" fitWidth="107.0" layoutX="171.0" layoutY="142.0" onDragDropped="#handleDropMatri" onDragOver="#handledragOverMatri" pickOnBounds="true">
          <image>
-            <Image url="@Profile/Espinas,Alexander.png" />
+            <Image url="@../../img/Abella-Logo.png" />
          </image>
       </ImageView>
       <Label layoutX="177.0" layoutY="239.0" text="Maticulation" textFill="#373462">
@@ -358,14 +358,14 @@
             </HBox>
          </children>
       </VBox>
-      <Label fx:id="Alert" layoutX="56.0" layoutY="109.0" textFill="RED">
+      <Label fx:id="Alert" layoutX="56.0" layoutY="109.0" text="Drag and Drop Image in the Logo" textFill="RED">
          <font>
             <Font name="Candara Light" size="18.0" />
          </font>
       </Label>
       <ImageView fx:id="Profile" fitHeight="92.0" fitWidth="107.0" layoutX="342.0" layoutY="19.0" onDragDropped="#handleDropProfile" onDragOver="#handledragOverProfile" pickOnBounds="true">
          <image>
-            <Image url="@Profile/Espinas,Alexander.png" />
+            <Image url="@../../img/Abella-Logo.png" />
          </image>
       </ImageView>
    </children>

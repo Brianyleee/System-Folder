@@ -7,48 +7,20 @@ package brgy_abella_system.FinancialAid;
 
 import brgy_abella_system.Connector;
 import brgy_abella_system.Repeatables;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.net.URL;
-import java.nio.file.Paths;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import java.util.*;
+import javafx.collections.*;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.TransferMode;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Path;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.stage.Window;
+import javafx.scene.control.*;
+import javafx.scene.image.*;
+import javafx.scene.input.*;
 import javax.imageio.ImageIO;
-import javax.swing.JFileChooser;
 
 /**
  * FXML Controller class
@@ -299,31 +271,46 @@ public class EditRecipientController implements Initializable {
             String AvgMonInc = this.AvgInc.getText();
             String EnrollPaid = this.EnrollPaid.getText();
             String SemEsti = this.SemEsti.getText();
-            int Age = Integer.valueOf(this.age.getText());
-            
-            StoreData(Profile,Grades, Matri, fname, mname, lname,
-             CourseR, SchoolAttend, RStatus, RAddress, RZone, Sex, DOB,
-             POB, Contact_Number, Zone_Org, DayApplied, College_Level, MotherlName, MotherfName,
-             MothermName, FatherlName, FatherfName, FathermName, ConNum_M, ConNum_F,
-             OccupationM, OccupationF, EstAnnInc, AvgMonInc, EnrollPaid, SemEsti,
-             Age, Id);
-
+            int Age = 0;
+            boolean isDigit = false;
+            if (age.getText() == null) {
+                Age = 0;
+            } else {
+                for (char c : age.getText().toCharArray()) {
+                    if (!Character.isDigit(c)) {
+                        isDigit = false;
+                    } else {
+                        isDigit = true;
+                    }
+                }
+                if (isDigit == false) {
+                    Age = 0;
+                } else {
+                    Age = Integer.valueOf(age.getText());
+                }
+            }
+            StoreData(Profile, Grades, Matri, fname, mname, lname,
+                    CourseR, SchoolAttend, RStatus, RAddress, RZone, Sex, DOB,
+                    POB, Contact_Number, Zone_Org, DayApplied, College_Level, MotherlName, MotherfName,
+                    MothermName, FatherlName, FatherfName, FathermName, ConNum_M, ConNum_F,
+                    OccupationM, OccupationF, EstAnnInc, AvgMonInc, EnrollPaid, SemEsti,
+                    Age, Id,isDigit);
         } catch (Exception e) {
             Alert.setText("Something Went Wrong Please Enter Valid Answers in the Form");
         }
 
     }
 
-    public void StoreData(String Profile,String Grades,String Matri,String fname,String mname,String lname,
-            String CourseR,String SchoolAttend,String RStatus,String RAddress,int RZone,String Sex,String DOB,
-            String POB,String Contact_Number,String Zone_Org,String DayApplied,String College_Level,String MotherlName,String MotherfName,
-            String MothermName,String FatherlName,String FatherfName,String FathermName,String ConNum_M,String ConNum_F,
-            String OccupationM,String OccupationF,String EstAnnInc,String AvgMonInc,String EnrollPaid,String SemEsti,
-            int Age,String Id) throws SQLException{
+    public void StoreData(String Profile, String Grades, String Matri, String fname, String mname, String lname,
+            String CourseR, String SchoolAttend, String RStatus, String RAddress, int RZone, String Sex, String DOB,
+            String POB, String Contact_Number, String Zone_Org, String DayApplied, String College_Level, String MotherlName, String MotherfName,
+            String MothermName, String FatherlName, String FatherfName, String FathermName, String ConNum_M, String ConNum_F,
+            String OccupationM, String OccupationF, String EstAnnInc, String AvgMonInc, String EnrollPaid, String SemEsti,
+            int Age, String Id,boolean Digit) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = null;
         String query = "UPDATE Financial_Aid SET "
-                + "First_Name_R=?,"+"Middle_Name_R=?,"+ "Last_Name_R=?,"
+                + "First_Name_R=?," + "Middle_Name_R=?," + "Last_Name_R=?,"
                 + "Course=?,"
                 + "School=?,"
                 + "Status=?,"
@@ -336,8 +323,8 @@ public class EditRecipientController implements Initializable {
                 + "Zone_Organization=?,"
                 + "Day_Applied=?,"
                 + "College_Level=?,"
-                + "Last_Name_M=?,"+ "First_Name_M=?,"+ "Middle_Name_M=?,"
-                + "Last_Name_F=?,"+ "First_Name_F=?,"+ "Middle_Name_F=?,"
+                + "Last_Name_M=?," + "First_Name_M=?," + "Middle_Name_M=?,"
+                + "Last_Name_F=?," + "First_Name_F=?," + "Middle_Name_F=?,"
                 + "Contact_Number_M=?,"
                 + "Contact_Number_F=?,"
                 + "Occupation_M=?,"
@@ -351,8 +338,10 @@ public class EditRecipientController implements Initializable {
                 + "Matri=?,"
                 + "Image=?"
                 + " WHERE Recipient_Id=?";
-        try{
-            ps = Connect.prepareStatement(query);
+        try {
+            if(!fname.isEmpty() && College_Level != null && !lname.isEmpty() && !CourseR.isEmpty() && !SchoolAttend.isEmpty() && DayApplied != null && Age != 0 && !Id.isEmpty() && EstAnnInc != null 
+                    && !mname.isEmpty() && RStatus != null && !RAddress.isEmpty() && Sex != null && DOB != null && !POB.isEmpty()){
+                ps = Connect.prepareStatement(query);
             ps.setString(1, fname);
             ps.setString(2, mname);
             ps.setString(3, lname);
@@ -380,19 +369,22 @@ public class EditRecipientController implements Initializable {
             ps.setString(25, OccupationF);
             ps.setString(26, EstAnnInc);
             ps.setString(27, AvgMonInc);
-            ps.setString(28,EnrollPaid);   
-            ps.setString(29,SemEsti);   
-            ps.setInt(30,Age);
-            ps.setString(31,Grades); 
-            ps.setString(32,Matri); 
-            ps.setString(33,Profile);
-            ps.setString(34,Id);
+            ps.setString(28, EnrollPaid);
+            ps.setString(29, SemEsti);
+            ps.setInt(30, Age);
+            ps.setString(31, Grades);
+            ps.setString(32, Matri);
+            ps.setString(33, Profile);
+            ps.setString(34, Id);
             ps.executeUpdate();
             action.Exit(SaveBtn);
-        }catch(Exception e){
+            }else{
+                Alert.setText("Fill out Required Fields");
+            }
+        } catch (Exception e) {
             e.printStackTrace();
             ps.close();
-        }finally{
+        } finally {
             ps.close();
         }
     }

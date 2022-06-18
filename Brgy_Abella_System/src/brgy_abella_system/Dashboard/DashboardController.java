@@ -4,30 +4,34 @@
  * and open the template in the editor.
  */
 package brgy_abella_system.Dashboard;
-import brgy_abella_system.Functions;
+import brgy_abella_system.Connector;
 import brgy_abella_system.Repeatables;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 
 public class DashboardController implements Initializable {
+    
+    Connection Connect;
 
-    Functions DashboardModel = new Functions();
+    public DashboardController() {
+        Connect = Connector.Connect();
+        if (Connect == null) {
+            System.exit(0);
+        }
+    }
+
     Repeatables action = new Repeatables();
 
     private BorderPane BorderPane;
@@ -91,18 +95,86 @@ public class DashboardController implements Initializable {
     }
     
     private void Employeecounter() throws SQLException{
-        int count = DashboardModel.countExistingEmployee();
+        int count = countExistingEmployee();
         Emp_Counter.setText(Integer.toString(count));
     }
     
     private void BlotterCounter() throws SQLException {
-        int count = DashboardModel.countBlottersFiled();
+        int count = countBlottersFiled();
         Blotter_Counter.setText(Integer.toString(count));
     }
 
     private void FinancialAidCounter() throws SQLException{
-        int count = DashboardModel.countFinancialAidFiled();
+        int count = countFinancialAidFiled();
         Financial_Counter.setText(Integer.toString(count));
+    }
+    
+     public int countExistingEmployee() throws SQLException{
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT Employee_Id FROM Employee";
+        int index = 0;
+        try {
+            ps = Connect.prepareStatement(query);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                index++;
+            }
+            return index;
+        } catch (Exception e) {
+            index = 0;
+            return index;
+        } finally {
+            ps.close();
+            rs.close();
+        }
+    }
+    
+
+    
+
+    
+//    Counts the number of total Blotters filed  
+    public int countBlottersFiled() throws SQLException{
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT Case_No FROM Blotter";
+        int index = 0;
+        try {
+            ps = Connect.prepareStatement(query);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                index++;
+            }
+            return index;
+        } catch (Exception e) {
+            index = 0;
+            return index;
+        } finally {
+            ps.close();
+            rs.close();
+        }
+    }
+    
+    public int countFinancialAidFiled() throws SQLException{
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT Recipient_Id FROM Financial_Aid";
+        int index = 0;
+        try {
+            ps = Connect.prepareStatement(query);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                index++;
+            }
+            return index;
+        } catch (Exception e) {
+            index = 0;
+            return index;
+        } finally {
+            ps.close();
+            rs.close();
+        }
     }
     
 }

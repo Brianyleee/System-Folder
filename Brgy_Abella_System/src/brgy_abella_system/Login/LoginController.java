@@ -1,31 +1,29 @@
 
 package brgy_abella_system.Login;
-import brgy_abella_system.Functions;
+import brgy_abella_system.Connector;
 import brgy_abella_system.Repeatables;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 
+import javafx.fxml.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.fxml.*;
-import javafx.scene.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.*;
+import javafx.scene.control.*;
+
 
 public class LoginController implements Initializable {
-    public Functions LoginModel = new Functions();   
+    
+    Connection Connect;
+
+    public LoginController() {
+        Connect = Connector.Connect();
+        if (Connect == null) {
+            System.exit(0);
+        }
+    }
+      
     Repeatables action = new Repeatables();
     @FXML
     private TextField Username;
@@ -49,7 +47,7 @@ public class LoginController implements Initializable {
     private void LoginButtonAction(ActionEvent event) throws SQLException, IOException {
         String username = Username.getText();
         String password = Password.getText();
-        if (LoginModel.isLogin(username, password)) {
+        if (isLogin(username, password)) {
             action.ChangeScene("Dashboard/Dashboard.fxml", LoginBtn);
         } else {
             LoginStatus.setText("Invalid Username / Password");
@@ -67,5 +65,28 @@ public class LoginController implements Initializable {
     public void ExitButtonAction(ActionEvent event) {
         action.Exit(ExitBtn);
     } 
+    
+    //    Login Functionality Validating if the username and password are the same with the one in the database.
+    public boolean isLogin(String user, String pass) throws SQLException {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT * FROM Account WHERE Username = ? AND Password = ?";
+        try {
+            ps = Connect.prepareStatement(query);
+            ps.setString(1, user);
+            ps.setString(2, pass);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        } finally {
+            ps.close();
+            rs.close();
+        }
+    }
 
 }
