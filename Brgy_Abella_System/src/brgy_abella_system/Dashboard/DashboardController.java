@@ -47,6 +47,8 @@ public class DashboardController implements Initializable {
     @FXML
     private Button LogoutBtn;
     @FXML
+    private Label Resident_Counter;
+    @FXML
     private Label Emp_Counter;
     @FXML
     private Label Blotter_Counter;
@@ -61,6 +63,7 @@ public class DashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
+            ResidentCounter();
             Employeecounter();
             BlotterCounter();
             FinancialAidCounter();
@@ -94,6 +97,11 @@ public class DashboardController implements Initializable {
         action.ChangeScene("FinancialAid/FinancialAid.fxml", financialAidBtn);
     }
     
+    private void ResidentCounter() throws SQLException {
+        int count = countExistingResident();
+        Resident_Counter.setText(Integer.toString(count));
+    }
+    
     private void Employeecounter() throws SQLException{
         int count = countExistingEmployee();
         Emp_Counter.setText(Integer.toString(count));
@@ -109,7 +117,28 @@ public class DashboardController implements Initializable {
         Financial_Counter.setText(Integer.toString(count));
     }
     
-     public int countExistingEmployee() throws SQLException{
+    public int countExistingResident() throws SQLException {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT Resident_Id FROM Resident";
+        int index = 0;
+        try {
+            ps = Connect.prepareStatement(query);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                index++;
+            }
+            return index;
+        } catch (Exception e) {
+            index = 0;
+            return index;
+        } finally {
+            ps.close();
+            rs.close();
+        }
+    }
+    
+    public int countExistingEmployee() throws SQLException{
         PreparedStatement ps = null;
         ResultSet rs = null;
         String query = "SELECT Employee_Id FROM Employee";

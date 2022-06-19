@@ -4,14 +4,21 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="1028.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="brgy_abella_system.Dashboard.DashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="1028.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="brgy_abella_system.Resident.ResidentController">
    <children>
       <VBox prefHeight="546.0" prefWidth="190.0" spacing="25.0" style="-fx-background-color: #37366F99;">
          <children>
@@ -35,7 +42,7 @@
                   <Insets left="30.0" />
                </padding>
             </Pane>
-            <Button fx:id="homeBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#homeBtnAction" prefHeight="29.0" prefWidth="268.0" style="-fx-background-color: #37366FAA;" text="HOME" textFill="WHITE">
+            <Button fx:id="homeBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#homeBtnAction" prefHeight="29.0" prefWidth="268.0" style="-fx-background-color: transparent;" text="HOME" textFill="WHITE">
                <font>
                   <Font name="Bookman Old Style" size="10.0" />
                </font>
@@ -56,7 +63,7 @@
                   <Insets left="30.0" />
                </padding>
             </Button>
-            <Button fx:id="residentBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#residentBtnAction" prefHeight="28.0" prefWidth="272.0" style="-fx-background-color: transparent;" text="RESIDENT" textFill="WHITE">
+            <Button fx:id="residentBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#residentBtnAction" prefHeight="28.0" prefWidth="272.0" style="-fx-background-color: #37366FAA;" text="RESIDENT" textFill="WHITE">
                <font>
                   <Font name="Bookman Old Style" size="10.0" />
                </font>
@@ -169,7 +176,91 @@
             <Insets bottom="10.0" />
          </padding>
       </VBox>
-      <Label alignment="CENTER" graphicTextGap="10.0" layoutX="192.0" layoutY="11.0" prefHeight="45.0" prefWidth="825.0" text="ABELLA DASHBOARD" textFill="#37366f">
+      <GridPane layoutX="206.0" layoutY="62.0" prefHeight="446.0" prefWidth="795.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="158.0" minHeight="0.0" prefHeight="32.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="459.0" minHeight="10.0" prefHeight="427.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TableView fx:id="residentTable" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#GetDataOnClick" prefHeight="408.0" prefWidth="795.0" style="-fx-border-radius: 10px; -fx-border-color: #37366FAA; -fx-background-color: transparent;" GridPane.rowIndex="1">
+              <columns>
+                <TableColumn fx:id="residentId" prefWidth="100.0">
+                     <graphic>
+                        <Label text="Resident ID" textFill="#37366f" />
+                     </graphic>
+                  </TableColumn>
+                <TableColumn fx:id="residentName" prefWidth="248.0">
+                     <graphic>
+                        <Label text="Name" textFill="#37366f" />
+                     </graphic>
+                  </TableColumn>
+                  <TableColumn fx:id="residentAddress" prefWidth="248.0">
+                     <graphic>
+                        <Label text="Address" textFill="#37366f" />
+                     </graphic>
+                  </TableColumn>
+                  <TableColumn fx:id="residentContactNo" prefWidth="195.0">
+                     <graphic>
+                        <Label text="Contact No." textFill="#37366f" />
+                     </graphic>
+                  </TableColumn>
+              </columns>
+            </TableView>
+            <HBox prefHeight="52.0" prefWidth="795.0">
+               <children>
+                  <ImageView fitHeight="23.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/Search.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" top="7.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <TextField fx:id="searchBar" onKeyReleased="#SearchData" prefHeight="25.0" prefWidth="436.0" promptText="Search for Existing Resident">
+                     <HBox.margin>
+                        <Insets top="3.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Courier New" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="RefreshBtn" mnemonicParsing="false" onAction="#RefreshBtnAction" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: transparent; -fx-border-color: #37366FAA; -fx-border-radius: 20px;" text="Refresh" textFill="#37366f">
+                     <font>
+                        <Font name="Courier New" size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" top="3.2" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="addResidentBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#AddBtnAction" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: #37366FAA;" text="Add Resident" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="6.0" top="3.2" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Courier New Bold" size="12.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="13.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/Add.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </GridPane>
+      <Label alignment="CENTER" graphicTextGap="10.0" layoutX="128.0" layoutY="14.0" prefHeight="45.0" prefWidth="825.0" text="ABELLA RESIDENTS LIST" textFill="#37366f">
          <font>
             <Font name="Courier New" size="15.0" />
          </font>
@@ -181,65 +272,25 @@
             </ImageView>
          </graphic>
       </Label>
-      <ImageView fitHeight="65.0" fitWidth="61.0" layoutX="224.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/ResidentCount.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="Resident_Counter" alignment="CENTER" layoutX="285.0" layoutY="103.0" prefHeight="58.0" prefWidth="101.0" style="-fx-border-color: #37366FAA; -fx-border-radius: 10px;" text="0" textFill="#37366f">
-         <font>
-            <Font name="Courier New" size="48.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="250.0" layoutY="173.0" text="Resident Count" textAlignment="CENTER" textFill="#37366f">
-         <font>
-            <Font name="Courier New" size="12.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="65.0" fitWidth="61.0" layoutX="476.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/BlotterCount.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="Blotter_Counter" alignment="CENTER" layoutX="537.0" layoutY="104.0" prefHeight="58.0" prefWidth="101.0" style="-fx-border-color: #37366FAA; -fx-border-radius: 10px;" text="0" textFill="#37366f">
-         <font>
-            <Font name="Courier New" size="48.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="507.0" layoutY="173.0" text="Blotters Count" textAlignment="CENTER" textFill="#37366f">
-         <font>
-            <Font name="Courier New" size="12.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="65.0" fitWidth="61.0" layoutX="473.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/FinancialAid.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="Financial_Counter" alignment="CENTER" layoutX="538.0" layoutY="215.0" prefHeight="58.0" prefWidth="101.0" style="-fx-border-color: #37366FAA; -fx-border-radius: 10px;" text="0" textFill="#37366f">
-         <font>
-            <Font name="Courier New" size="48.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="488.0" layoutY="284.0" text="Financial Aid Count" textAlignment="CENTER" textFill="#37366f">
-         <font>
-            <Font name="Courier New" size="12.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="65.0" fitWidth="61.0" layoutX="224.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/EmployeeCount.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="Emp_Counter" alignment="CENTER" layoutX="285.0" layoutY="215.0" prefHeight="58.0" prefWidth="101.0" style="-fx-border-color: #37366FAA; -fx-border-radius: 10px;" text="0" textFill="#37366f">
-         <font>
-            <Font name="Courier New" size="48.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="250.0" layoutY="285.0" text="Employee Count" textAlignment="CENTER" textFill="#37366f">
-         <font>
-            <Font name="Courier New" size="12.0" />
-         </font>
-      </Label>
+      <HBox alignment="CENTER" layoutX="207.0" layoutY="504.0" prefHeight="34.0" prefWidth="795.0" spacing="20.0">
+         <children>
+            <Button fx:id="editBtn" mnemonicParsing="false" onAction="#editBtnAction" prefHeight="23.0" prefWidth="104.0" style="-fx-background-color: #37366FAA; -fx-background-radius: 10px;" text="Edit" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="viewBtn" mnemonicParsing="false" onAction="#ViewBtnAction" prefHeight="23.0" prefWidth="104.0" style="-fx-background-color: #37366FAA; -fx-background-radius: 10px;" text="View" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="brgy_abella_system.Resident.AddResidentController">
+   <children>
+      <Pane layoutX="-58.0" layoutY="-128.0" prefHeight="284.0" prefWidth="145.0" style="-fx-rotate: 50px; -fx-background-color: #373462;" />
+      <ImageView fitHeight="85.0" fitWidth="108.0" layoutX="259.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/Abella-Logo.png" />
+         </image>
+      </ImageView>
+      <VBox layoutX="51.0" layoutY="196.0" prefHeight="120.0" prefWidth="238.0" spacing="5.0">
+         <children>
+            <Label text="Resident ID *" />
+            <TextField fx:id="Add_Resident_Id" promptText="Resident ID *" style="-fx-border-color: #373462;" />
+            <Label text="Employee ID *" />
+            <TextField fx:id="Add_Employee_Id" promptText="Employee ID *" style="-fx-border-color: #373462;" />
+            <Label text="First Name *" />
+            <TextField fx:id="Add_First_Name" promptText="First Name *" style="-fx-border-color: #373462;" />
+            <Label text="Middle Name *" />
+            <TextField fx:id="Add_Middle_Name" promptText="Middle Name *" style="-fx-border-color: #373462;" />
+            <Label text="Last Name *" />
+            <TextField fx:id="Add_Last_Name" promptText="Last Name *" style="-fx-border-color: #373462;" />
+            <Label text="Gender *" />
+            <ComboBox fx:id="Add_Gender" prefHeight="25.0" prefWidth="340.0" promptText="Gender *" style="-fx-border-color: #373462;" />
+            <Label text="Birth Date *" />
+            <DatePicker fx:id="Add_Birth_Date" prefHeight="25.0" prefWidth="255.0" promptText="Birth Date *" style="-fx-border-color: #373462;" />
+            <Label text="Marital Status *" />
+            <ComboBox fx:id="Add_Marital_Status" prefHeight="25.0" prefWidth="238.0" promptText="Marital Status *" style="-fx-border-color: #373462;" />
+         </children>
+      </VBox>
+      <VBox layoutX="318.0" layoutY="178.0" prefHeight="120.0" prefWidth="238.0" spacing="5.0">
+         <children>
+            <ImageView fx:id="Add_Resident_Image" fitHeight="85.0" fitWidth="108.0" onDragDropped="#handleDropImage" onDragOver="#handleDragOverImage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/Abella-Logo.png" />
+               </image>
+            </ImageView>
+            <Label text="Contact No *" />
+            <TextField fx:id="Add_Contact_No" promptText="Contact No *" style="-fx-border-color: #373462;" />
+            <Label text="House No *" />
+            <TextField fx:id="Add_House_No" promptText="House No *" style="-fx-border-color: #373462;" />
+            <Label text="Street *" />
+            <TextField fx:id="Add_Street" promptText="Street *" style="-fx-border-color: #373462;" />
+            <Label text="Zone *" />
+            <ComboBox fx:id="Add_Zone" prefHeight="25.0" prefWidth="340.0" promptText="Zone *" style="-fx-border-color: #373462;" />
+            <Label text="Barangay *" />
+            <TextField fx:id="Add_Barangay" promptText="Barangay *" style="-fx-border-color: #373462;" />
+            <Label text="City *" />
+            <TextField fx:id="Add_City" promptText="City *" style="-fx-border-color: #373462;" />
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" layoutX="170.0" layoutY="640.0" prefHeight="35.0" prefWidth="267.0" spacing="50.0">
+         <children>
+            <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#SaveButtonAction" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: #373462; -fx-background-radius: 20px; -fx-border-radius: 20px;" text="Save" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#ExitButtonAction" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: #373462; -fx-background-radius: 20px; -fx-border-radius: 20px;" text="Cancel" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children>
+      </HBox>
+      <Label fx:id="Alert" alignment="CENTER" layoutX="81.0" layoutY="152.0" prefHeight="17.0" prefWidth="446.0" textFill="RED">
+         <font>
+            <Font name="Courier New" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="198.0" layoutY="130.0" text="Brgy. Abella Resident Profile" textFill="#373462">
+         <font>
+            <Font name="Candara Light" size="18.0" />
+         </font>
+      </Label>
+      <Pane layoutX="524.0" layoutY="568.0" prefHeight="237.0" prefWidth="124.0" style="-fx-rotate: 50px; -fx-background-color: #373462;" />
+      <Label layoutX="423.0" layoutY="208.0" text="Resident Image *" />
+   </children>
+</AnchorPane>
