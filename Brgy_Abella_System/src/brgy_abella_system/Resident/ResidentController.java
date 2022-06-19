@@ -306,7 +306,6 @@ public class ResidentController implements Initializable {
             
             if (rs.next()) {
                 String residentID = rs.getString("Resident_Id");
-                String employeeID = rs.getString("Employee_Id");
                 
                 String first_Name = rs.getString("First_Name");
                 String middle_Name = rs.getString("Middle_Name");
@@ -329,7 +328,7 @@ public class ResidentController implements Initializable {
                 Parent root = loader.load();
                 
                 ViewResidentController ViewResidentController = loader.getController();
-                ViewResidentController.Display(resident_Image, residentID, employeeID, first_Name, middle_Name, last_Name, 
+                ViewResidentController.Display(resident_Image, residentID, first_Name, middle_Name, last_Name, 
                         gender, birthDate, marital_Status, contact_Number, house_Number, street, zone, barangay, city);
                 
                 Stage stage = new Stage();

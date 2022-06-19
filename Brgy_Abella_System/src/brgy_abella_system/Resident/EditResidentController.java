@@ -38,8 +38,6 @@ public class EditResidentController implements Initializable {
     @FXML
     private TextField Edit_Resident_Id;
     @FXML
-    private TextField Edit_Employee_Id;
-    @FXML
     private TextField Edit_First_Name;
     @FXML
     private TextField Edit_Middle_Name;
@@ -85,7 +83,6 @@ public class EditResidentController implements Initializable {
         String residentImage;
         
         String residentID = Edit_Resident_Id.getText().toUpperCase();
-        String employeeID = Edit_Employee_Id.getText().toUpperCase();
         
         String firstName = Edit_First_Name.getText().toUpperCase();
         String middleName = Edit_Middle_Name.getText().toUpperCase();
@@ -94,7 +91,25 @@ public class EditResidentController implements Initializable {
         String gender = Edit_Gender.getValue();
         String birthDate = Edit_Birth_Date.getValue().toString();
         String maritalStatus = Edit_Marital_Status.getValue();
-        String contactNo = Edit_Contact_No.getText();
+        String contactNo;
+        boolean isDigit = false;
+        
+        if (Edit_Contact_No.getText() == null) {
+            contactNo = null;
+        } else {
+            for (char c : Edit_Contact_No.getText().toCharArray()) {
+                if (!Character.isDigit(c)) {
+                    isDigit = false;
+                } else {
+                    isDigit = true;
+                }
+            }
+            if (isDigit == false) {
+                contactNo = null;
+            } else {
+                contactNo = Edit_Contact_No.getText();
+            }
+        }
         
         String houseNo = Edit_House_No.getText().toUpperCase();
         String street = Edit_Street.getText().toUpperCase();
@@ -102,11 +117,11 @@ public class EditResidentController implements Initializable {
         String barangay = Edit_Barangay.getText().toUpperCase();
         String city = Edit_City.getText().toUpperCase();
         
-        if (!residentID.isEmpty() && !employeeID.isEmpty() && !firstName.isEmpty() && !middleName.isEmpty() && !lastName.isEmpty() && gender != null
+        if (!residentID.isEmpty() && !firstName.isEmpty() && !middleName.isEmpty() && !lastName.isEmpty() && gender != null
                 && birthDate != null && maritalStatus != null && !contactNo.isEmpty() && !houseNo.isEmpty() && !street.isEmpty()
                 && zone != null && !barangay.isEmpty() && !city.isEmpty()) {
             residentImage = SaveImage();
-            StoreData(residentImage, residentID, employeeID, firstName, middleName, lastName,
+            StoreData(residentImage, residentID, firstName, middleName, lastName,
                 gender, birthDate, maritalStatus, contactNo, houseNo,
                 street, zone, barangay, city);
             Alert.setText("Successfully edited the resident's information");
@@ -117,12 +132,11 @@ public class EditResidentController implements Initializable {
         
     }
 
-    public void StoreData(String residentImage, String residentID, String employeeID, String firstName, String middleName, String lastName,
+    public void StoreData(String residentImage, String residentID, String firstName, String middleName, String lastName,
             String gender, String birthDate, String maritalStatus, String contactNo, String houseNo,
             String street, String zone, String barangay, String city) throws SQLException {
         PreparedStatement ps = null;
         String query = "UPDATE Resident SET "
-                + "Employee_Id = ?,"
                 + "First_Name = ?," + "Middle_Name = ?," + "Last_Name = ?,"
                 + "House_No = ?,"
                 + "Street = ?,"
@@ -137,21 +151,20 @@ public class EditResidentController implements Initializable {
                 + " WHERE Resident_Id = ?";
         try {
             ps = Connect.prepareStatement(query);
-            ps.setString(1, employeeID);
-            ps.setString(2, firstName);
-            ps.setString(3, middleName);
-            ps.setString(4, lastName);
-            ps.setString(5, houseNo);
-            ps.setString(6, street);
-            ps.setString(7, zone);
-            ps.setString(8, barangay);
-            ps.setString(9, city);
-            ps.setString(10, gender);
-            ps.setString(11, maritalStatus);
-            ps.setString(12, birthDate);
-            ps.setString(13, residentImage);
-            ps.setString(14, contactNo);
-            ps.setString(15, residentID);
+            ps.setString(1, firstName);
+            ps.setString(2, middleName);
+            ps.setString(3, lastName);
+            ps.setString(4, houseNo);
+            ps.setString(5, street);
+            ps.setString(6, zone);
+            ps.setString(7, barangay);
+            ps.setString(8, city);
+            ps.setString(9, gender);
+            ps.setString(10, maritalStatus);
+            ps.setString(11, birthDate);
+            ps.setString(12, residentImage);
+            ps.setString(13, contactNo);
+            ps.setString(14, residentID);
             ps.executeUpdate();
             action.Exit(saveBtn);
         } catch (Exception e) {
@@ -174,7 +187,6 @@ public class EditResidentController implements Initializable {
             rs = ps.executeQuery();
             
             if (rs.next()) {
-                String employeeID = rs.getString("Employee_Id");
                 
                 String first_Name = rs.getString("First_Name");
                 String middle_Name = rs.getString("Middle_Name");
@@ -195,8 +207,6 @@ public class EditResidentController implements Initializable {
                 
                 Image view_Image = new Image(new File(resident_Image).toURI().toString());
                 Edit_Resident_Image.setImage(view_Image);
-                
-                Edit_Employee_Id.setText(employeeID);
                 
                 Edit_First_Name.setText(first_Name);
                 Edit_Middle_Name.setText(middle_Name);

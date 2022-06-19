@@ -38,8 +38,6 @@ public class ViewResidentController implements Initializable {
     @FXML
     private Label View_Birth_Date;
     @FXML
-    private Label EmployeeID;
-    @FXML
     private Label ResidentID;
     @FXML
     private Label View_Marital_Status;
@@ -64,14 +62,13 @@ public class ViewResidentController implements Initializable {
         action.Exit(cancelBtn);
     }
     
-    public void Display(String residentImage, String residentID, String employeeID, String firstName, String middleName, String lastName,
+    public void Display(String residentImage, String residentID, String firstName, String middleName, String lastName,
             String gender, String birthDate, String maritalStatus, String contactNo, String houseNo,
             String street, String zone, String barangay, String city) {
         try {
             Image viewImage = new Image(new File(residentImage).toURI().toString());
             View_Resident_Image.setImage(viewImage);
             
-            EmployeeID.setText(employeeID);
             ResidentID.setText(residentID);
             
             View_First_Name.setText(firstName);

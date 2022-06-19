@@ -5,6 +5,10 @@
         <group>
             <file>file:/C:/Users/smile/Documents/GitHub/System-Folder/Brgy_Abella_System/src/brgy_abella_system/FinancialAid/AddRecipientController.java</file>
             <file>file:/C:/Users/smile/Documents/GitHub/System-Folder/Brgy_Abella_System/src/brgy_abella_system/Resident/AddResidentController.java</file>
+            <file>file:/C:/Users/smile/Documents/GitHub/System-Folder/Brgy_Abella_System/src/brgy_abella_system/Resident/Resident.java</file>
+            <file>file:/C:/Users/smile/Documents/GitHub/System-Folder/Brgy_Abella_System/src/brgy_abella_system/Resident/ResidentController.java</file>
+            <file>file:/C:/Users/smile/Documents/GitHub/System-Folder/Brgy_Abella_System/src/brgy_abella_system/Resident/ViewResidentController.java</file>
+            <file>file:/C:/Users/smile/Documents/GitHub/System-Folder/Brgy_Abella_System/src/brgy_abella_system/Resident/EditResidentController.java</file>
         </group>
     </open-files>
 </project-private>

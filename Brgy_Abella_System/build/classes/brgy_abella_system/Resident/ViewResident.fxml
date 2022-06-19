@@ -22,7 +22,7 @@
             <Image url="@../../img/Abella-Logo.png" />
          </image>
       </ImageView>
-      <Button fx:id="cancelBtn" layoutX="543.0" layoutY="426.0" mnemonicParsing="false" onAction="#cancelBtnAction" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #37366f; -fx-border-color: transparent;" text="Back" textFill="WHITE">
+      <Button fx:id="cancelBtn" layoutX="543.0" layoutY="379.0" mnemonicParsing="false" onAction="#cancelBtnAction" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #37366f; -fx-border-color: transparent;" text="Back" textFill="WHITE">
          <font>
             <Font name="Courier New" size="12.0" />
          </font>
@@ -32,11 +32,6 @@
       </Button>
       <VBox layoutX="248.0" layoutY="74.0" prefHeight="85.0" prefWidth="109.0" spacing="15.0">
          <children>
-            <Label text="Employee ID" textFill="#37366f">
-               <font>
-                  <Font name="Courier New" size="12.0" />
-               </font>
-            </Label>
             <Label text="Resident ID" textFill="#37366f">
                <font>
                   <Font name="Courier New" size="12.0" />
@@ -44,12 +39,12 @@
             </Label>
          </children>
       </VBox>
-      <Label alignment="CENTER" layoutX="51.0" layoutY="173.0" prefHeight="17.0" prefWidth="186.0" text="Resident" textFill="#37366f">
+      <Label alignment="CENTER" layoutX="51.0" layoutY="126.0" prefHeight="17.0" prefWidth="186.0" text="Resident" textFill="#37366f">
          <font>
             <Font name="Courier New Italic" size="12.0" />
          </font>
       </Label>
-      <VBox layoutX="51.0" layoutY="201.0" prefHeight="295.0" prefWidth="109.0" spacing="20.0">
+      <VBox layoutX="51.0" layoutY="154.0" prefHeight="295.0" prefWidth="109.0" spacing="20.0">
          <children>
             <Label text="First Name" textFill="#37366f">
                <font>
@@ -83,7 +78,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="160.0" layoutY="201.0" prefHeight="266.0" prefWidth="186.0" spacing="13.0">
+      <VBox layoutX="160.0" layoutY="154.0" prefHeight="266.0" prefWidth="186.0" spacing="13.0">
          <children>
             <Label fx:id="View_First_Name" prefHeight="15.0" prefWidth="228.0" style="-fx-border-color: #37366f; -fx-border-radius: 5px;" text="xxxxxxxxxxxxxxxxx" textFill="#37366f">
                <font>
@@ -137,11 +132,6 @@
       </VBox>
       <VBox layoutX="364.0" layoutY="74.0" prefHeight="85.0" prefWidth="109.0" spacing="15.0">
          <children>
-            <Label fx:id="EmployeeID" text="Employee ID" textFill="#37366f">
-               <font>
-                  <Font name="Courier New" size="12.0" />
-               </font>
-            </Label>
             <Label fx:id="ResidentID" text="Resident ID" textFill="#37366f">
                <font>
                   <Font name="Courier New" size="12.0" />
@@ -149,7 +139,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="360.0" layoutY="201.0" prefHeight="295.0" prefWidth="109.0" spacing="20.0">
+      <VBox layoutX="360.0" layoutY="154.0" prefHeight="295.0" prefWidth="109.0" spacing="20.0">
          <children>
             <Label text="Marital Status" textFill="#37366f">
                <font>
@@ -183,7 +173,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="469.0" layoutY="201.0" prefHeight="209.0" prefWidth="186.0" spacing="13.0">
+      <VBox layoutX="469.0" layoutY="154.0" prefHeight="209.0" prefWidth="186.0" spacing="13.0">
          <children>
             <Label fx:id="View_Marital_Status" prefHeight="15.0" prefWidth="228.0" style="-fx-border-color: #37366f; -fx-border-radius: 5px;" text="xxxxxxxxxxxxxxxxx" textFill="#37366f">
                <font>
@@ -240,13 +230,5 @@
             <Image url="@../../img/Abella-Logo.png" />
          </image>
       </ImageView>
-      <Button fx:id="printIndigency" layoutX="374.0" layoutY="426.0" mnemonicParsing="false" onAction="#cancelBtnAction" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: #37366f; -fx-border-color: transparent;" text="Print Indigency" textFill="WHITE">
-         <font>
-            <Font name="Courier New" size="12.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
    </children>
 </AnchorPane>

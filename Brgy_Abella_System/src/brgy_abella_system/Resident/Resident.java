@@ -1,7 +1,7 @@
 package brgy_abella_system.Resident;
 
 public class Resident {
-    private String residentId, employeeId, firstName, middleName, lastName, houseNo, street, zone, barangay
+    private String residentId, firstName, middleName, lastName, houseNo, street, zone, barangay
             , gender, maritalStatus, city, dateOB, image, contactNo
             , fullName, fullAddress;
     
@@ -18,14 +18,6 @@ public class Resident {
 
     public void setResidentId(String residentId) {
         this.residentId = residentId;
-    }
-
-    public String getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
     }
 
     public String getFirstName() {

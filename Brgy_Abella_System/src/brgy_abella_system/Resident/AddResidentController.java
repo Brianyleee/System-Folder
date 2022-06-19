@@ -36,8 +36,6 @@ public class AddResidentController implements Initializable {
     @FXML
     private TextField Add_Resident_Id;
     @FXML
-    private TextField Add_Employee_Id;
-    @FXML
     private TextField Add_First_Name;
     @FXML
     private TextField Add_Middle_Name;
@@ -83,7 +81,6 @@ public class AddResidentController implements Initializable {
         String residentImage;
         
         String residentID = Add_Resident_Id.getText().toUpperCase();
-        String employeeID = Add_Employee_Id.getText().toUpperCase();
         
         String firstName = Add_First_Name.getText().toUpperCase();
         String middleName = Add_Middle_Name.getText().toUpperCase();
@@ -92,7 +89,25 @@ public class AddResidentController implements Initializable {
         String gender = Add_Gender.getValue();
         String birthDate = Add_Birth_Date.getValue().toString();
         String maritalStatus = Add_Marital_Status.getValue();
-        String contactNo = Add_Contact_No.getText();
+        String contactNo;
+        boolean isDigit = false;
+        
+        if (Add_Contact_No.getText() == null) {
+            contactNo = null;
+        } else {
+            for (char c : Add_Contact_No.getText().toCharArray()) {
+                if (!Character.isDigit(c)) {
+                    isDigit = false;
+                } else {
+                    isDigit = true;
+                }
+            }
+            if (isDigit == false) {
+                contactNo = null;
+            } else {
+                contactNo = Add_Contact_No.getText();
+            }
+        }
         
         String houseNo = Add_House_No.getText().toUpperCase();;
         String street = Add_Street.getText().toUpperCase();
@@ -100,11 +115,11 @@ public class AddResidentController implements Initializable {
         String barangay = Add_Barangay.getText().toUpperCase();
         String city = Add_City.getText().toUpperCase();
         
-        if (!residentID.isEmpty() && !employeeID.isEmpty() && !firstName.isEmpty() && !middleName.isEmpty() && !lastName.isEmpty() && gender != null
-                && birthDate != null && maritalStatus != null && !contactNo.isEmpty() && !houseNo.isEmpty() && !street.isEmpty()
+        if (!residentID.isEmpty() && !firstName.isEmpty() && !middleName.isEmpty() && !lastName.isEmpty() && gender != null
+                && birthDate != null && maritalStatus != null && contactNo != null && !houseNo.isEmpty() && !street.isEmpty()
                 && zone != null && !barangay.isEmpty() && !city.isEmpty()) {
             residentImage = SaveImage();
-            StoreData(residentImage, residentID, employeeID, firstName, middleName, lastName,
+            StoreData(residentImage, residentID, firstName, middleName, lastName,
             gender, birthDate, maritalStatus, contactNo, houseNo,
             street, zone, barangay, city);
             Alert.setText("Successfully added the resident");
@@ -114,29 +129,28 @@ public class AddResidentController implements Initializable {
         }
     }
     
-    public void StoreData(String residentImage, String residentID, String employeeID, String firstName, String middleName, String lastName,
+    public void StoreData(String residentImage, String residentID, String firstName, String middleName, String lastName,
             String gender, String birthDate, String maritalStatus, String contactNo, String houseNo,
             String street, String zone, String barangay, String city) throws SQLException {
         PreparedStatement ps = null;
-        String query = "INSERT INTO Resident (Resident_Id, Employee_Id, First_Name, Middle_Name, Last_Name, House_No, Street, Zone, "
-                + "Barangay, City, Gender, Marital_Status, DOB, Image, Contact_No) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO Resident (Resident_Id, First_Name, Middle_Name, Last_Name, House_No, Street, Zone, "
+                + "Barangay, City, Gender, Marital_Status, DOB, Image, Contact_No) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             ps = Connect.prepareStatement(query);
             ps.setString(1, residentID);
-            ps.setString(2, employeeID);
-            ps.setString(3, firstName);
-            ps.setString(4, middleName);
-            ps.setString(5, lastName);
-            ps.setString(6, houseNo);
-            ps.setString(7, street);
-            ps.setString(8, zone);
-            ps.setString(9, barangay);
-            ps.setString(10, city);
-            ps.setString(11, gender);
-            ps.setString(12, maritalStatus);
-            ps.setString(13, birthDate);
-            ps.setString(14, residentImage);
-            ps.setString(15, contactNo);
+            ps.setString(2, firstName);
+            ps.setString(3, middleName);
+            ps.setString(4, lastName);
+            ps.setString(5, houseNo);
+            ps.setString(6, street);
+            ps.setString(7, zone);
+            ps.setString(8, barangay);
+            ps.setString(9, city);
+            ps.setString(10, gender);
+            ps.setString(11, maritalStatus);
+            ps.setString(12, birthDate);
+            ps.setString(13, residentImage);
+            ps.setString(14, contactNo);
             ps.executeUpdate();
             action.Exit(saveBtn);
         } catch (Exception e) {

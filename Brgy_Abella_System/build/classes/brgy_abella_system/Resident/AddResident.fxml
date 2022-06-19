@@ -26,8 +26,6 @@
          <children>
             <Label text="Resident ID *" />
             <TextField fx:id="Add_Resident_Id" promptText="Resident ID *" style="-fx-border-color: #373462;" />
-            <Label text="Employee ID *" />
-            <TextField fx:id="Add_Employee_Id" promptText="Employee ID *" style="-fx-border-color: #373462;" />
             <Label text="First Name *" />
             <TextField fx:id="Add_First_Name" promptText="First Name *" style="-fx-border-color: #373462;" />
             <Label text="Middle Name *" />
