@@ -101,7 +101,24 @@ public class AddBlotterController implements Initializable {
         String first_Name_C = Blotter_First_Name_C.getText().toUpperCase();
         String middle_Name_C = Blotter_Middle_Name_C.getText().toUpperCase();
         String last_Name_C = Blotter_Last_Name_C.getText().toUpperCase();
-        String contact_Number_C = Blotter_Contact_No_C.getText().toUpperCase();
+        String contact_Number_C;
+        boolean isDigitC = false;
+        if (Blotter_Contact_No_C.getText() == null) {
+            contact_Number_C = null;
+        } else {
+            for (char c : Blotter_Contact_No_C.getText().toCharArray()) {
+                if (!Character.isDigit(c)) {
+                    isDigitC = false;
+                } else {
+                    isDigitC = true;
+                }
+            }
+            if (isDigitC == false) {
+                contact_Number_C = null;
+            } else {
+                contact_Number_C = Blotter_Contact_No_C.getText().toUpperCase();
+            }
+        }
         String street_C = Blotter_Street_C.getText().toUpperCase();
         String barangay_C = Blotter_Barangay_C.getText().toUpperCase();
         String city_C = Blotter_City_C.getText().toUpperCase();
@@ -110,15 +127,32 @@ public class AddBlotterController implements Initializable {
         String first_Name_D = Blotter_First_Name_D.getText().toUpperCase();
         String middle_Name_D = Blotter_Middle_Name_D.getText().toUpperCase();
         String last_Name_D = Blotter_Last_Name_D.getText().toUpperCase();
-        String contact_Number_D = Blotter_Contact_No_D.getText().toUpperCase();
+        String contact_Number_D;
+        boolean isDigitD = false;
+        if (Blotter_Contact_No_D.getText() == null) {
+            contact_Number_D = null;
+        } else {
+            for (char c : Blotter_Contact_No_D.getText().toCharArray()) {
+                if (!Character.isDigit(c)) {
+                    isDigitD = false;
+                } else {
+                    isDigitD = true;
+                }
+            }
+            if (isDigitD == false) {
+                contact_Number_D = null;
+            } else {
+                contact_Number_D = Blotter_Contact_No_D.getText().toUpperCase();
+            }
+        }
         String street_D = Blotter_Street_D.getText().toUpperCase();
         String barangay_D = Blotter_Barangay_D.getText().toUpperCase();
         String city_D = Blotter_City_D.getText().toUpperCase();
         String province_D = Blotter_Province_D.getText().toUpperCase();
         
         if (!case_Number.isEmpty() && !complaint.isEmpty() && !solution.isEmpty() && !employee_ID.isEmpty() && complaint_Date != null
-            && !complainant_ID_C.isEmpty() && !first_Name_C.isEmpty() && !middle_Name_C.isEmpty() && !last_Name_C.isEmpty() && !contact_Number_C.isEmpty() && !street_C.isEmpty() && !barangay_C.isEmpty() && !city_C.isEmpty() && !province_C.isEmpty()
-            && !first_Name_D.isEmpty() && !middle_Name_D.isEmpty() && !last_Name_D.isEmpty() && !contact_Number_D.isEmpty() && !street_D.isEmpty() && !barangay_D.isEmpty() && !city_D.isEmpty() && !province_D.isEmpty()) {
+            && !complainant_ID_C.isEmpty() && !first_Name_C.isEmpty() && !middle_Name_C.isEmpty() && !last_Name_C.isEmpty() && contact_Number_C != null && !street_C.isEmpty() && !barangay_C.isEmpty() && !city_C.isEmpty() && !province_C.isEmpty()
+            && !first_Name_D.isEmpty() && !middle_Name_D.isEmpty() && !last_Name_D.isEmpty() && contact_Number_D != null && !street_D.isEmpty() && !barangay_D.isEmpty() && !city_D.isEmpty() && !province_D.isEmpty()) {
             if (!isCaseNoExisting(case_Number)) {
                 if (!isComplainantIDExisting(complainant_ID_C)) {
                     if (FileBlotter(case_Number, employee_ID, complaint_Date, complaint, solution, 
